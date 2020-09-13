@@ -87,7 +87,7 @@ npx tailwindcss build -o myTailwind.css
 node_modules/.bin/tailwind-override --inputFile myTailwind.css --outputFile tailwindProperties.json
 ```
 
-You can pass `tailwindProperties.json` as an option to function:
+You can pass `tailwindProperties.json` as an option to the function:
 
 ```js
 import tailwindProperties from "./tailwindProperties.json";
