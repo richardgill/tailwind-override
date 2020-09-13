@@ -1,0 +1,39 @@
+extends:
+  - eslint-config-airbnb-base
+  - prettier
+
+plugins:
+  - prettier
+
+parser:
+  "@typescript-eslint/parser"
+
+settings:
+  ecmascript: 6
+
+env:
+  browser: true
+  jest: true
+
+rules:
+  arrow-body-style: 0
+  func-style: 0
+  func-names: 0
+  comma-dangle: 0
+  no-console: 0
+  no-param-reassign: 0
+  linebreak-style: 0
+  import/no-extraneous-dependencies: 0
+  import/no-unresolved: 0
+  import/extensions: 0
+  import/prefer-default-export: 0
+  import/no-named-as-default: 0
+  import/no-commonjs: 2
+  space-return-throw-case: 0
+  object-shorthand: 0
+  complexity: 0
+  strict: [2, "never"]
+  no-confusing-arrow: 0
+  prettier/prettier: ["error", {"trailingComma": "all", "singleQuote": true, "semi": false, "printWidth": 180 }]
+  import/no-absolute-path: 0
+  no-restricted-syntax: 0

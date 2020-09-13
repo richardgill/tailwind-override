@@ -1,0 +1,62 @@
+{
+  "name": "tailwind-override",
+  "version": "0.0.2",
+  "description": "Override clashing tailwind classes",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "check:node": "check-node-version --package",
+    "ci": "tsc --noEmit && yarn run lint:js && yarn run test",
+    "precommit": "lint-staged && yarn run lint",
+    "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check",
+    "format:js": "prettier --write \"{src,test}/**/*.{t,j}s\"",
+    "lint": "yarn run lint:js",
+    "lint:js": "eslint ./src ./test --ext=js,ts",
+    "lint:js:without:prettier": "yarn run lint:js -- --rule 'prettier/prettier: 0'",
+    "lint:watch": "nodemon --watch src --exec \"yarn run lint:without:prettier\"",
+    "lint:without:prettier": "yarn run lint:js:without:prettier",
+    "generateTailwindProperties": "ts-node src/generateTailwindProperties.js",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:watch": "nodemon -w ./src -w ./test -e ts,tsx --exec 'yarn run test'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/lodash": "^4.14.150",
+    "@types/node": "^14.10.1",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-prettier": "^2.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-prettier": "^2.0.1",
+    "husky": "^1.0.1",
+    "jest": "^25.4.0",
+    "lint-staged": "^7.3.0",
+    "lodash": "^4.17.12",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.2.2",
+    "sort-package-json": "^1.15.0",
+    "tailwindcss": "^1.8.9",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": ">= 13.4 < 14"
+  },
+  "engine-strict": true,
+  "lint-staged": {
+    "{src,test}/**/*.{j,t}s": [
+      "prettier --write",
+      "git add"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ]
+  }
+}
