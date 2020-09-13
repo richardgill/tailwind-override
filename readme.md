@@ -90,6 +90,7 @@ node_modules/.bin/tailwind-override --inputFile myTailwind.css --outputFile tail
 You can pass `tailwindProperties.json` as an option to the function:
 
 ```js
+import { overrideTailwindClasses } from "tailwind-override";
 import tailwindProperties from "./tailwindProperties.json";
 overrideTailwindClasses("text-blue-700 text-blue-750", {
   tailwindProperties: tailwindProperties,
