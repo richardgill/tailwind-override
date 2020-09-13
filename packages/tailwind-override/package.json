@@ -1,6 +1,6 @@
 {
   "name": "tailwind-override",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Override clashing tailwind classes",
   "license": "MIT",
   "main": "lib/index.js",
@@ -22,7 +22,6 @@
     "test": "jest",
     "test:watch": "nodemon -w ./src -w ./test -e ts,tsx --exec 'yarn run test'"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
