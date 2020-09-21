@@ -5,6 +5,10 @@
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardgill/tailwind-override"
+  },
   "scripts": {
     "build": "tsc",
     "check:node": "check-node-version --package",

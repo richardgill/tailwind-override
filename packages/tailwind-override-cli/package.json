@@ -3,6 +3,10 @@
   "version": "0.0.3",
   "description": "CLI to geneate tailwind-override config",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardgill/tailwind-override"
+  },
   "bin": {
     "tailwind-override": "lib/generateTailwindProperties.js"
   },
