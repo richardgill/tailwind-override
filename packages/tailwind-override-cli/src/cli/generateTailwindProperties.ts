@@ -32,10 +32,8 @@ const ruleToProperty = _.chain(tailwindRules)
   )
   .groupBy('selector')
   .mapValues(values => {
-    console.log(values)
     return _.uniq(_.map(values, 'property'))
   })
   .value()
-console.log(ruleToProperty)
 
 fs.writeFileSync(argv.outputFile, JSON.stringify(ruleToProperty, null, 2))
