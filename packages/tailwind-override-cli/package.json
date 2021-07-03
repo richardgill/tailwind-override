@@ -57,7 +57,7 @@
     "typescript": "^3.8.3"
   },
   "engines": {
-    "node": ">= 13.4 < 14"
+    "node": ">= 13.4"
   },
   "engine-strict": true,
   "lint-staged": {
