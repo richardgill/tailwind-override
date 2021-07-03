@@ -57,5 +57,6 @@
       "sort-package-json",
       "git add"
     ]
-  }
+  },
+  "gitHead": "969ad18de2941b69ef95c4411e21f3969890beca"
 }
