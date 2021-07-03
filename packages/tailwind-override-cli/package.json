@@ -1,6 +1,6 @@
 {
   "name": "tailwind-override-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "CLI to geneate tailwind-override config",
   "license": "MIT",
   "repository": {
@@ -57,7 +57,7 @@
     "typescript": "^3.8.3"
   },
   "engines": {
-    "node": ">= 13.4 < 14"
+    "node": ">= 13.4"
   },
   "engine-strict": true,
   "lint-staged": {
