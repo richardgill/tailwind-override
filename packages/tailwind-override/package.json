@@ -1,6 +1,6 @@
 {
   "name": "tailwind-override",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Override clashing tailwind classes",
   "license": "MIT",
   "main": "lib/index.js",
