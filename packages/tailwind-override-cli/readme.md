@@ -95,3 +95,5 @@ overrideTailwindClasses('text-blue-700 text-blue-750', {
   tailwindProperties: tailwindProperties,
 })
 ```
+
+
