@@ -1,5 +1,6 @@
 import tailwindProperties from './tailwindcssProperties.json'
-import { overrideTailwindClasses as overrideTailwindClassesCore, OptionsArg } from './core'
+import { overrideTailwindClasses as overrideTailwindClassesCore } from './core'
+import type { OptionsArg } from './core'
 
 const defaultOptions = {
   prefix: '',

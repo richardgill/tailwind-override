@@ -12,9 +12,9 @@ export const overrideTailwindClasses = (classNamesString: string, optionsArg: Op
     .reduce((result: { class: string; tailWindCssProperties: string[] }[], className: string) => {
       const classNameWithoutPrefix = className.startsWith(options.prefix) ? className.substring(options.prefix.length) : className
       const propertiesForClass = (options.tailwindProperties[classNameWithoutPrefix] as string[]) || []
-      const nonClashingClasses = result.filter(r => !r.tailWindCssProperties.some(p => propertiesForClass.includes(p)))
+      const nonClashingClasses = result.filter((r) => !r.tailWindCssProperties.some((p) => propertiesForClass.includes(p)))
       return [...nonClashingClasses, { class: className, tailWindCssProperties: propertiesForClass }]
     }, [])
-    .map(r => r.class)
+    .map((r) => r.class)
     .join(' ')
 }
