@@ -24,7 +24,9 @@ This helps define React Components where tailwind classes are overrideable.
 
 ✅ Works with all tailwind classes
 
-✅ Supports prefixes
+✅ Supports prefixes & variants e.g. `md:*`
+
+✅ Small bundle size
 
 ## Usage
 
@@ -75,7 +77,32 @@ overrideTailwindClasses("prefix-pt-2 prefix-pt-4", { prefix: "prefix-" });
 // => 'prefix-pt-4'
 ```
 
-## Custom classes
+## Variants
+
+Supports Tailwinds 'variants' functionality.
+
+```js
+overrideTailwindClasses("md:bg-red-500 md:bg-white");
+// => 'md:bg-white'
+```
+
+## Bundle size
+
+tailwind-override-cli does analysis of your `.css` and generates a `.json` file.
+
+Out of the box it comes preloaded with all the tailwind classes - creating a file which is ~116KB.
+
+You can avoid adding this large `.json` file to your bundle by instead importing: `tailwind-override/lib/core` and providing your own `.json` file which you can generate from your [purged tailwind css file] (https://tailwindcss.com/docs/optimizing-for-production).
+
+```js
+import { overrideTailwindClasses } from "tailwind-override/lib/core";
+import tailwindProperties from "./tailwindProperties.json";
+overrideTailwindClasses("text-blue-700 text-blue-750", {
+  tailwindProperties: tailwindProperties,
+});
+```
+
+## Generating your own `.json` file
 
 If you have additional Tailwindcss classes you've added, you can generate a json config to use with the package.
 
@@ -83,7 +110,7 @@ Example:
 
 ```bash
 yarn add --dev tailwind-override-cli
-npx tailwindcss build -o myTailwind.css
+npx tailwindcss build -o myTailwind.css # to purge: NODE_ENV=production npx tailwindcss build -o myTailwind.css
 node_modules/.bin/tailwind-override --inputFile myTailwind.css --outputFile tailwindProperties.json
 ```
 
