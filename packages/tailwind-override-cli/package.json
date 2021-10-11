@@ -51,7 +51,7 @@
     "nodemon": "^1.19.4",
     "prettier": "^1.2.2",
     "sort-package-json": "^1.15.0",
-    "tailwindcss": "^1.8.9",
+    "tailwindcss": "^2.2.7",
     "ts-jest": "^25.4.0",
     "ts-node": "^9.0.0",
     "typescript": "^3.8.3"

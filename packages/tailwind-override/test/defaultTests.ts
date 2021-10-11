@@ -11,5 +11,7 @@ export const defaultTestCases = [
   { input: 'pt-2 apple pt-4 orange', expectedOutput: 'apple pt-4 orange' },
   { input: 'pt-2 apple pt-4 orange text-pink-200', expectedOutput: 'apple pt-4 orange text-pink-200' },
   { input: 'pt-4 text-pink-200', expectedOutput: 'pt-4 text-pink-200' },
+  { input: 'pt-4 text-pink-200', expectedOutput: 'pt-4 text-pink-200' },
   { input: 'prefix-pt-2 apple prefix-pt-4 orange', options: { prefix: 'prefix-' }, expectedOutput: 'apple prefix-pt-4 orange' },
+  { input: 'md:bg-red-500 md:bg-white', expectedOutput: 'md:bg-white' },
 ]
