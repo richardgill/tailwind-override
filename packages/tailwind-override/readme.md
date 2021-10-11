@@ -5,16 +5,16 @@ A function to remove clashing Tailwindcss classes, where the right-most one wins
 Examples:
 
 ```js
-overrideTailwindClasses('pt-2 pt-4')
+overrideTailwindClasses("pt-2 pt-4");
 // => 'pt-4'
 
-overrideTailwindClasses('text-pink-200 text-blue-200')
+overrideTailwindClasses("text-pink-200 text-blue-200");
 // => 'text-blue-200'
 
-overrideTailwindClasses('text-pink-200 pt-2')
+overrideTailwindClasses("text-pink-200 pt-2");
 // => 'text-pink-200 pt-2' (don't clash)
 
-overrideTailwindClasses('orange apple')
+overrideTailwindClasses("orange apple");
 // => 'orange apple' (not tailwind classes)
 ```
 
@@ -24,7 +24,9 @@ This helps define React Components where tailwind classes are overrideable.
 
 ✅ Works with all tailwind classes
 
-✅ Supports prefixes
+✅ Supports prefixes & variants e.g. `md:*`
+
+✅ Small bundle size
 
 ## Usage
 
@@ -33,8 +35,8 @@ yarn add tailwind-override
 ```
 
 ```js
-import { overrideTailwindClasses } from 'tailwind-override'
-overrideTailwindClasses('pt-2 pt-4')
+import { overrideTailwindClasses } from "tailwind-override";
+overrideTailwindClasses("pt-2 pt-4");
 // => 'pt-4'
 ```
 
@@ -59,10 +61,11 @@ const Text = props => <p className={overrideTailwindClasses(`text-pink-200 ${pro
 ## With [classnames](https://github.com/JedWatson/classnames)
 
 ```js
-import classNamesOriginal from 'classnames'
-import { overrideTailwindClasses } from 'tailwind-override'
+import classNamesOriginal from "classnames";
+import { overrideTailwindClasses } from "tailwind-override";
 
-export const classNames = (...args) => overrideTailwindClasses(classNamesOriginal(...args))
+export const classNames = (...args) =>
+  overrideTailwindClasses(classNamesOriginal(...args));
 ```
 
 ## Prefixes
@@ -70,11 +73,36 @@ export const classNames = (...args) => overrideTailwindClasses(classNamesOrigina
 Supports Tailwinds prefix functionality.
 
 ```js
-overrideTailwindClasses('prefix-pt-2 prefix-pt-4', { prefix: 'prefix-' })
+overrideTailwindClasses("prefix-pt-2 prefix-pt-4", { prefix: "prefix-" });
 // => 'prefix-pt-4'
 ```
 
-## Custom classes
+## Variants
+
+Supports Tailwinds 'variants' functionality.
+
+```js
+overrideTailwindClasses("md:bg-red-500 md:bg-white");
+// => 'md:bg-white'
+```
+
+## Bundle size
+
+tailwind-override-cli does analysis of your `.css` and generates a `.json` file.
+
+Out of the box it comes preloaded with all the tailwind classes - creating a file which is ~116KB.
+
+You can avoid adding this large `.json` file to your bundle by instead importing: `tailwind-override/lib/core` and providing your own `.json` file which you can generate from your [purged tailwind css file] (https://tailwindcss.com/docs/optimizing-for-production).
+
+```js
+import { overrideTailwindClasses } from "tailwind-override/lib/core";
+import tailwindProperties from "./tailwindProperties.json";
+overrideTailwindClasses("text-blue-700 text-blue-750", {
+  tailwindProperties: tailwindProperties,
+});
+```
+
+## Generating your own `.json` file
 
 If you have additional Tailwindcss classes you've added, you can generate a json config to use with the package.
 
@@ -82,7 +110,7 @@ Example:
 
 ```bash
 yarn add --dev tailwind-override-cli
-npx tailwindcss build -o myTailwind.css
+npx tailwindcss build -o myTailwind.css # to purge: NODE_ENV=production npx tailwindcss build -o myTailwind.css
 node_modules/.bin/tailwind-override --inputFile myTailwind.css --outputFile tailwindProperties.json
 ```
 
@@ -90,8 +118,8 @@ You can pass `tailwindProperties.json` as an option to the function:
 
 ```js
 import { overrideTailwindClasses } from "tailwind-override/lib/core";
-import tailwindProperties from './tailwindProperties.json'
-overrideTailwindClasses('text-blue-700 text-blue-750', {
+import tailwindProperties from "./tailwindProperties.json";
+overrideTailwindClasses("text-blue-700 text-blue-750", {
   tailwindProperties: tailwindProperties,
-})
+});
 ```
