@@ -90,21 +90,12 @@ overrideTailwindClasses("md:bg-red-500 md:bg-white");
 
 tailwind-override-cli does analysis of your `.css` and generates a `.json` file.
 
-Out of the box it comes preloaded with all the tailwind classes - creating a file which is ~116KB.
+Out of the box `tailwind-override` it comes preloaded with a file `tailwindcssProperties.json` which contains all the tailwind classes - this is ~116KB.
 
-You can avoid adding this large `.json` file to your bundle by instead importing: `tailwind-override/lib/core` and providing your own `.json` file which you can generate from your [purged tailwind css file] (https://tailwindcss.com/docs/optimizing-for-production).
+You can avoid adding this large `.json` file to your bundle by instead importing: `tailwind-override/lib/core` and providing your own `.json` file which you can generate from your [purged tailwind css file](https://tailwindcss.com/docs/optimizing-for-production).
 
-```js
-import { overrideTailwindClasses } from "tailwind-override/lib/core";
-import tailwindProperties from "./tailwindProperties.json";
-overrideTailwindClasses("text-blue-700 text-blue-750", {
-  tailwindProperties: tailwindProperties,
-});
-```
+### Generating your own `.json` file
 
-## Generating your own `.json` file
-
-If you have additional Tailwindcss classes you've added, you can generate a json config to use with the package.
 
 Example:
 
@@ -117,7 +108,7 @@ node_modules/.bin/tailwind-override --inputFile myTailwind.css --outputFile tail
 You can pass `tailwindProperties.json` as an option to the function:
 
 ```js
-import { overrideTailwindClasses } from "tailwind-override/lib/core";
+import { overrideTailwindClasses } from "tailwind-override/lib/core"; // avoids default .json file
 import tailwindProperties from "./tailwindProperties.json";
 overrideTailwindClasses("text-blue-700 text-blue-750", {
   tailwindProperties: tailwindProperties,
