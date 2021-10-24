@@ -21,6 +21,26 @@ const lastClass = (selector: string) => {
   return selector.substring(matchIndex + 1, selector.length)
 }
 
+const pseudoElementStartIndex = (selector: string) => {
+  const match = /\w(:)/gm.exec(selector)
+  return match ? match.index + 1 : selector.length
+}
+
+const pseudoElements = (selector: string) => {
+  if (
+    selector
+      .substring(pseudoElementStartIndex(selector))
+      .split(':')
+      .filter(pe => pe !== '').length > 1
+  ) {
+    console.log('selector', selector)
+  }
+  return selector
+    .substring(pseudoElementStartIndex(selector))
+    .split(':')
+    .filter(pe => pe !== '')
+}
+
 const removePseudoClass = (selector: string) => {
   const match = /\w(:)/gm.exec(selector)
   const endIndex = match ? match.index + 1 : selector.length
@@ -67,11 +87,13 @@ const ruleToProperty = _.chain(tailwindRules)
     rule.declarations.map(d => ({
       property: d.property,
       selector: formatCssRule(rule.selectors[0]),
+      pseudoElements: pseudoElements(rule.selectors[0]),
     })),
   )
-  .groupBy(r => lastClass(r.selector))
+  .groupBy(r => r.selector)
+  // .groupBy(r => r.selector)
   .mapValues(values => {
-    return _.uniq(_.map(values, 'property'))
+    return { properties: _.uniq(_.map(values, 'property')), pseudoElements: _.uniqWith(_.flatMap(values, 'pseudoElements'), _.isEqual) }
   })
   .value()
 
