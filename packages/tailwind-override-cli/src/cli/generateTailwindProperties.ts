@@ -16,25 +16,12 @@ const code = fs.readFileSync(inputFile, 'utf8')
 
 const ast = css.parse(code, { source: inputFile })
 
-const lastClass = (selector: string) => {
-  const matchIndex = selector.lastIndexOf(':')
-  return selector.substring(matchIndex + 1, selector.length)
-}
-
 const pseudoElementStartIndex = (selector: string) => {
   const match = /\w(:)/gm.exec(selector)
   return match ? match.index + 1 : selector.length
 }
 
 const pseudoElements = (selector: string) => {
-  if (
-    selector
-      .substring(pseudoElementStartIndex(selector))
-      .split(':')
-      .filter(pe => pe !== '').length > 1
-  ) {
-    console.log('selector', selector)
-  }
   return selector
     .substring(pseudoElementStartIndex(selector))
     .split(':')
@@ -42,9 +29,7 @@ const pseudoElements = (selector: string) => {
 }
 
 const removePseudoClass = (selector: string) => {
-  const match = /\w(:)/gm.exec(selector)
-  const endIndex = match ? match.index + 1 : selector.length
-  return selector.substring(0, endIndex)
+  return selector.substring(0, pseudoElementStartIndex(selector))
 }
 
 const removeGreaterThan = (selector: string) => {
