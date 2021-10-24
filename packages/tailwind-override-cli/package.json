@@ -17,7 +17,7 @@
     "precommit": "lint-staged && yarn run lint",
     "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check",
     "format:js": "prettier --write \"{src,test}/**/*.{t,j}s\"",
-    "generateTailwindProperties": "ts-node src/generateTailwindProperties.js",
+    "generateTailwindProperties": "ts-node src/cli/generateTailwindProperties.ts",
     "lint": "yarn run lint:js",
     "lint:js": "eslint ./src ./test --ext=js,ts",
     "lint:js:without:prettier": "yarn run lint:js -- --rule 'prettier/prettier: 0'",
