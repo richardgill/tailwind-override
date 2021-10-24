@@ -76,7 +76,6 @@ const ruleToProperty = _.chain(tailwindRules)
     })),
   )
   .groupBy(r => r.selector)
-  // .groupBy(r => r.selector)
   .mapValues(values => {
     return { properties: _.uniq(_.map(values, 'property')), pseudoElements: _.uniqWith(_.flatMap(values, 'pseudoElements'), _.isEqual) }
   })
