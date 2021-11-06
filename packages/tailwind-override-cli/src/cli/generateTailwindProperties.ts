@@ -78,9 +78,6 @@ const tailwindRules: TailwindRule[] = flattenRules(ast.stylesheet.rules).filter(
 const ruleToProperty = _.chain(tailwindRules)
   .flatMap(rule =>
     rule.declarations.map(d => {
-      if (formatCssRule(rule.selectors[0]).includes('sm:px-4')) {
-        console.log(d, rule)
-      }
       return {
         property: d.property,
         selector: formatCssRule(rule.selectors[0]),

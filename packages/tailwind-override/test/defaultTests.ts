@@ -20,4 +20,6 @@ export const defaultTestCases: { input: string; expectedOutput: string; options?
   { input: 'hover:text-blue-500 focus:text-red-500', expectedOutput: 'hover:text-blue-500 focus:text-red-500' },
   { input: 'text-black hover:text-blue-500 focus:text-red-500', expectedOutput: 'text-black hover:text-blue-500 focus:text-red-500' },
   { input: 'sm:px-4 md:px-6 lg:px-8', expectedOutput: 'sm:px-4 md:px-6 lg:px-8' },
+  { input: 'sm:px-4 sm:px-6', expectedOutput: 'sm:px-6' },
+  { input: 'sm:container md:container lg:container', expectedOutput: 'sm:container md:container lg:container' },
 ]
