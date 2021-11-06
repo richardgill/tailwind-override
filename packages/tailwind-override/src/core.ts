@@ -1,15 +1,24 @@
+import _ from 'lodash'
+
 const defaultOptions = {
   prefix: '',
   tailwindProperties: {},
 }
-type TailwindCssRule = { properties: string[]; pseudoElements: string[] }
+type TailwindCssRule = { properties: string[]; pseudoElements: string[]; topLevelMediaRules: string[] }
 type TailWindCssProperties = { [key: string]: TailwindCssRule }
 
 export type OptionsArg = { prefix?: string; tailwindProperties?: TailWindCssProperties }
 
+const isEqualsSorted = (x: string[], y: string[]) => {
+  return _.isEqual(_.sortBy(x), _.sortBy(y))
+}
+
+const doMediaRulesClash = (mediaRule1: string[], mediaRule2: string[]) => {
+  return isEqualsSorted(mediaRule1, mediaRule2)
+}
+
 const doPseudoElementsClash = (pseudoElements1: string[], pseudoElements2: string[]) => {
-  const difference = [...pseudoElements1.filter((x) => !pseudoElements2.includes(x)), ...pseudoElements2.filter((x) => !pseudoElements1.includes(x))]
-  return difference.length === 0
+  return isEqualsSorted(pseudoElements1, pseudoElements2)
 }
 
 export const overrideTailwindClasses = (classNamesString: string, optionsArg: OptionsArg = defaultOptions) => {
@@ -21,6 +30,7 @@ export const overrideTailwindClasses = (classNamesString: string, optionsArg: Op
       const tailwindCssRule = options.tailwindProperties[classNameWithoutPrefix] || { properties: [], pseudoElements: [] }
       const nonClashingClasses = resultSoFar.filter((r) => {
         return (
+          !doMediaRulesClash(r.tailwindCssRule.topLevelMediaRules, tailwindCssRule.topLevelMediaRules) ||
           !doPseudoElementsClash(r.tailwindCssRule.pseudoElements, tailwindCssRule.pseudoElements) ||
           !r.tailwindCssRule.properties.some((p) => tailwindCssRule.properties.includes(p))
         )
