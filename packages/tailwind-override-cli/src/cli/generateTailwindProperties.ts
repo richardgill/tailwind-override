@@ -53,7 +53,15 @@ const flattenRules = inputRules => {
   while (rules.length > 0) {
     const rule = rules[0]
     if (rule.type === 'media') {
-      rules.push(...rule.rules)
+      const rulesToAdd = _.map(rule.rules, r => {
+        const newRule = { media: rule.media, children: [] }
+        const parentMediaRules = rule.parentMediaRules ? { ...rule.parentMediaRules, children: [...rule.parentMediaRules.children, newRule] } : newRule
+        return {
+          ...r,
+          parentMediaRules,
+        }
+      })
+      rules.push(...rulesToAdd)
     }
     if (rule.type === 'rule') {
       flattenedRules.push(rule)
@@ -62,22 +70,32 @@ const flattenRules = inputRules => {
   }
   return flattenedRules
 }
-type TailwindRule = { selectors: string[]; declarations: { property: string }[] }
+type TailwindRule = { selectors: string[]; declarations: { property: string }[]; parentMediaRules: string[] }
 const tailwindRules: TailwindRule[] = flattenRules(ast.stylesheet.rules).filter(rule => {
   return rule.type === 'rule' && _.some(rule.selectors, selector => selector.startsWith('.'))
 })
 
 const ruleToProperty = _.chain(tailwindRules)
   .flatMap(rule =>
-    rule.declarations.map(d => ({
-      property: d.property,
-      selector: formatCssRule(rule.selectors[0]),
-      pseudoElements: pseudoElements(rule.selectors[0]),
-    })),
+    rule.declarations.map(d => {
+      if (formatCssRule(rule.selectors[0]).includes('sm:px-4')) {
+        console.log(d, rule)
+      }
+      return {
+        property: d.property,
+        selector: formatCssRule(rule.selectors[0]),
+        pseudoElements: pseudoElements(rule.selectors[0]),
+        parentMediaRules: rule.parentMediaRules,
+      }
+    }),
   )
   .groupBy(r => r.selector)
   .mapValues(values => {
-    return { properties: _.uniq(_.map(values, 'property')), pseudoElements: _.uniqWith(_.flatMap(values, 'pseudoElements'), _.isEqual) }
+    return {
+      properties: _.uniq(_.map(values, 'property')),
+      pseudoElements: _.uniqWith(_.flatMap(values, 'pseudoElements'), _.isEqual),
+      topLevelMediaRules: _.uniq(_.compact(_.flatMap(values, 'parentMediaRules.media'))),
+    }
   })
   .value()
 
