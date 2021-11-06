@@ -12,4 +12,3 @@ export const overrideTailwindClasses = (classNamesString: string, optionsArg?: O
 }
 
 export const tailwindProperties = tailwindPropertiesJson
-
