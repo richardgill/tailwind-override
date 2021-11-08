@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { overrideTailwindClasses } from '../src/useCssProperties/core'
 import defaultTailwindcssProperties from '../src/useCssProperties/tailwindcssProperties.json'
 
-seedrandom('seed', { global: true })
+seedrandom('seed')
 
 const combinations = (array: string[]) => {
   return array.flatMap((v) =>

@@ -4,77 +4,74 @@ const maybeDashNumber = `($|-${number})`
 const numbersOrLetters = `([a-zA-Z]|${number})+`
 const dashNumbersOrLetters = `(-|[a-zA-Z]|${number})+`
 const maybeDashNumbersOrLetters = `($|-${dashNumbersOrLetters})`
-const maybeDashLetters = `($|-([a-zA-Z])+)`
 
-const regExp = (pattern: string) => new RegExp(`^${pattern}$`)
-
-export const rules = [
+const rules = [
   {
-    regex: regExp(`content-none`),
+    regex: `content-none`,
     properties: ['content'],
   },
   {
-    regex: regExp(`ease-(linear|in|out|in-out)`),
+    regex: `ease-(linear|in|out|in-out)`,
     properties: ['transition-timing-function'],
   },
   {
-    regex: regExp(`duration-${number}`),
+    regex: `duration-${number}`,
     properties: ['transition-duration'],
   },
   {
-    regex: regExp(`delay-${number}`),
+    regex: `delay-${number}`,
     properties: ['transition-delay'],
   },
   {
-    regex: regExp(`transition($|-all|-colors|-opacity|-shadow|-transform)`),
+    regex: `transition($|-all|-colors|-opacity|-shadow|-transform)`,
     properties: ['transition-duration', 'transition-property', 'transition-timing-function'],
   },
   {
-    regex: regExp(`transition-none`),
+    regex: `transition-none`,
     properties: ['transition-property'],
   },
   {
-    regex: regExp(`backdrop-sepia${maybeDashZero}`),
+    regex: `backdrop-sepia${maybeDashZero}`,
     properties: ['--tw-backdrop-sepia'],
   },
   {
-    regex: regExp(`backdrop-saturate-${number}`),
+    regex: `backdrop-saturate-${number}`,
     properties: ['--tw-backdrop-saturate'],
   },
   {
-    regex: regExp(`backdrop-opacity-${number}`),
+    regex: `backdrop-opacity-${number}`,
     properties: ['--tw-backdrop-opacity'],
   },
   {
-    regex: regExp(`backdrop-invert${maybeDashZero}`),
+    regex: `backdrop-invert${maybeDashZero}`,
     properties: ['--tw-backdrop-invert'],
   },
   {
-    regex: regExp(`-?backdrop-hue-rotate-${number}`),
+    regex: `-?backdrop-hue-rotate-${number}`,
     properties: ['--tw-backdrop-hue-rotate'],
   },
   {
-    regex: regExp(`backdrop-grayscale${maybeDashZero}`),
+    regex: `backdrop-grayscale${maybeDashZero}`,
     properties: ['--tw-backdrop-grayscale'],
   },
   {
-    regex: regExp(`backdrop-contrast-${number}`),
+    regex: `backdrop-contrast-${number}`,
     properties: ['--tw-backdrop-contrast'],
   },
   {
-    regex: regExp(`backdrop-brightness-${number}`),
+    regex: `backdrop-brightness-${number}`,
     properties: ['--tw-backdrop-brightness'],
   },
   {
-    regex: regExp(`backdrop-blur${maybeDashNumbersOrLetters}`),
+    regex: `backdrop-blur${maybeDashNumbersOrLetters}`,
     properties: ['--tw-backdrop-blur'],
   },
   {
-    regex: regExp(`backdrop-filter-none`),
+    regex: `backdrop-filter-none`,
     properties: ['-webkit-backdrop-filter', 'backdrop-filter'],
   },
   {
-    regex: regExp(`backdrop-filter`),
+    regex: `backdrop-filter`,
     properties: [
       '--tw-backdrop-blur',
       '--tw-backdrop-brightness',
@@ -90,775 +87,776 @@ export const rules = [
     ],
   },
   {
-    regex: regExp(`sepia${maybeDashZero}`),
+    regex: `sepia${maybeDashZero}`,
     properties: ['--tw-sepia'],
   },
   {
-    regex: regExp(`saturate-${number}`),
+    regex: `saturate-${number}`,
     properties: ['--tw-saturate'],
   },
   {
-    regex: regExp(`invert${maybeDashZero}`),
+    regex: `invert${maybeDashZero}`,
     properties: ['--tw-invert'],
   },
   {
-    regex: regExp(`-?hue-rotate-${number}`),
+    regex: `-?hue-rotate-${number}`,
     properties: ['--tw-hue-rotate'],
   },
   {
-    regex: regExp(`grayscale${maybeDashZero}`),
+    regex: `grayscale${maybeDashZero}`,
     properties: ['--tw-grayscale'],
   },
   {
-    regex: regExp(`drop-shadow${maybeDashNumbersOrLetters}`),
+    regex: `drop-shadow${maybeDashNumbersOrLetters}`,
     properties: ['--tw-drop-shadow'],
   },
   {
-    regex: regExp(`contrast-${number}`),
+    regex: `contrast-${number}`,
     properties: ['--tw-contrast'],
   },
   {
-    regex: regExp(`brightness-${number}`),
+    regex: `brightness-${number}`,
     properties: ['--tw-brightness'],
   },
   {
-    regex: regExp(`blur${maybeDashNumbersOrLetters}`),
+    regex: `blur${maybeDashNumbersOrLetters}`,
     properties: ['--tw-blur'],
   },
   {
-    regex: regExp(`filter-none`),
+    regex: `filter-none`,
     properties: ['filter'],
   },
   {
-    regex: regExp(`filter`),
+    regex: `filter`,
     properties: ['--tw-blur', '--tw-brightness', '--tw-contrast', '--tw-drop-shadow', '--tw-grayscale', '--tw-hue-rotate', '--tw-invert', '--tw-saturate', '--tw-sepia', 'filter'],
   },
   {
-    regex: regExp(`ring-offset-[A-Za-z].*`),
+    regex: `ring-offset-[A-Za-z].*`,
     properties: ['--tw-ring-offset-color'],
   },
   {
-    regex: regExp(`ring${maybeDashNumber}`),
+    regex: `ring${maybeDashNumber}`,
     properties: ['--tw-ring-offset-shadow', '--tw-ring-shadow', 'box-shadow'],
   },
   {
-    regex: regExp(`ring-offset-${number}`),
+    regex: `ring-offset-${number}`,
     properties: ['--tw-ring-offset-width'],
   },
   {
-    regex: regExp(`ring-opacity-${number}`),
+    regex: `ring-opacity-${number}`,
     properties: ['--tw-ring-opacity'],
   },
   {
-    regex: regExp(`ring-(transparent|current)`),
+    regex: `ring-(transparent|current)`,
     properties: ['--tw-ring-color'],
   },
   {
-    regex: regExp(`ring-inset`),
+    regex: `ring-inset`,
     properties: ['--tw-ring-inset'],
   },
   {
-    regex: regExp(`ring-${dashNumbersOrLetters}`),
+    regex: `ring-${dashNumbersOrLetters}`,
     properties: ['--tw-ring-color', '--tw-ring-opacity'],
   },
   {
-    regex: regExp(`outline-(none|white|black)`),
+    regex: `outline-(none|white|black)`,
     properties: ['outline', 'outline-offset'],
   },
   {
-    regex: regExp(`shadow${maybeDashNumbersOrLetters}`),
+    regex: `shadow${maybeDashNumbersOrLetters}`,
     properties: ['--tw-shadow', 'box-shadow'],
   },
   {
-    regex: regExp(`mix-blend-${dashNumbersOrLetters}`),
+    regex: `mix-blend-${dashNumbersOrLetters}`,
     properties: ['mix-blend-mode'],
   },
   {
-    regex: regExp(`bg-blend-${dashNumbersOrLetters}`),
+    regex: `bg-blend-${dashNumbersOrLetters}`,
     properties: ['background-blend-mode'],
   },
   {
-    regex: regExp(`opacity-${number}`),
+    regex: `opacity-${number}`,
     properties: ['opacity'],
   },
   {
-    regex: regExp(`caret-${dashNumbersOrLetters}`),
+    regex: `caret-${dashNumbersOrLetters}`,
     properties: ['caret-color'],
   },
   {
-    regex: regExp(`(subpixel-antialiased|antialiased)`),
+    regex: `(subpixel-antialiased|antialiased)`,
     properties: ['-moz-osx-font-smoothing', '-webkit-font-smoothing'],
   },
   {
-    regex: regExp(`(underline|line-through|no-underline)`),
+    regex: `(underline|line-through|no-underline)`,
     properties: ['text-decoration'],
   },
   {
-    regex: regExp(`text-opacity-${number}`),
+    regex: `text-opacity-${number}`,
     properties: ['--tw-text-opacity'],
   },
   {
-    regex: regExp(`text-(transparent|current)`),
+    regex: `text-(transparent|current)`,
     properties: ['color'],
   },
   {
-    regex: regExp(`text-(xs|sm|base|lg|xl|\\dxl)`),
+    regex: `text-(xs|sm|base|lg|xl|\\dxl)`,
     properties: ['font-size', 'line-height'],
   },
   {
-    regex: regExp(`text-(left|center|right|justify)`),
+    regex: `text-(left|center|right|justify)`,
     properties: ['text-align'],
   },
   {
-    regex: regExp(`text-${dashNumbersOrLetters}`),
+    regex: `text-${dashNumbersOrLetters}`,
     properties: ['--tw-text-opacity', 'color'],
   },
   {
-    regex: regExp(`tracking-${dashNumbersOrLetters}`),
+    regex: `tracking-${dashNumbersOrLetters}`,
     properties: ['letter-spacing'],
   },
   {
-    regex: regExp(`leading-${dashNumbersOrLetters}`),
+    regex: `leading-${dashNumbersOrLetters}`,
     properties: ['line-height'],
   },
   {
-    regex: regExp(`(diagonal-fractions|stacked-fractions)`),
+    regex: `(diagonal-fractions|stacked-fractions)`,
     properties: ['--tw-numeric-fraction'],
   },
   {
-    regex: regExp(`(proportional-nums|tabular-nums)`),
+    regex: `(proportional-nums|tabular-nums)`,
     properties: ['--tw-numeric-spacing'],
   },
   {
-    regex: regExp(`(lining-nums|oldstyle-nums)`),
+    regex: `(lining-nums|oldstyle-nums)`,
     properties: ['--tw-numeric-figure'],
   },
   {
-    regex: regExp(`slashed-zero`),
+    regex: `slashed-zero`,
     properties: ['--tw-slashed-zero'],
   },
   {
-    regex: regExp(`normal-nums`),
+    regex: `normal-nums`,
     properties: ['font-variant-numeric'],
   },
   {
-    regex: regExp(`ordinal`),
+    regex: `ordinal`,
     properties: ['--tw-numeric-figure', '--tw-numeric-fraction', '--tw-numeric-spacing', '--tw-ordinal', '--tw-slashed-zero', 'font-variant-numeric'],
   },
   {
-    regex: regExp(`(italic|not-italic)`),
+    regex: `(italic|not-italic)`,
     properties: ['font-style'],
   },
   {
-    regex: regExp(`(uppercase|lowercase|capitalize|normal-case)`),
+    regex: `(uppercase|lowercase|capitalize|normal-case)`,
     properties: ['text-transform'],
   },
   {
-    regex: regExp(`font-(sans|serif|mono)`),
+    regex: `font-(sans|serif|mono)`,
     properties: ['font-family'],
   },
   {
-    regex: regExp(`font-${dashNumbersOrLetters}`),
+    regex: `font-${dashNumbersOrLetters}`,
     properties: ['font-weight'],
   },
   {
-    regex: regExp(`align-${dashNumbersOrLetters}`),
+    regex: `align-${dashNumbersOrLetters}`,
     properties: ['vertical-align'],
   },
   {
-    regex: regExp(`pl-${numbersOrLetters}`),
+    regex: `pl-${numbersOrLetters}`,
     properties: ['padding-left'],
   },
   {
-    regex: regExp(`pb-${numbersOrLetters}`),
+    regex: `pb-${numbersOrLetters}`,
     properties: ['padding-bottom'],
   },
   {
-    regex: regExp(`pr-${numbersOrLetters}`),
+    regex: `pr-${numbersOrLetters}`,
     properties: ['padding-right'],
   },
   {
-    regex: regExp(`pt-${numbersOrLetters}`),
+    regex: `pt-${numbersOrLetters}`,
     properties: ['padding-top'],
   },
   {
-    regex: regExp(`py-${numbersOrLetters}`),
+    regex: `py-${numbersOrLetters}`,
     properties: ['padding-bottom', 'padding-top'],
   },
   {
-    regex: regExp(`px-${numbersOrLetters}`),
+    regex: `px-${numbersOrLetters}`,
     properties: ['padding-left', 'padding-right'],
   },
   {
-    regex: regExp(`p-${numbersOrLetters}`),
+    regex: `p-${numbersOrLetters}`,
     properties: ['padding'],
   },
   {
-    regex: regExp(`object-(bottom|center|left.*|right.*|top)`),
+    regex: `object-(bottom|center|left.*|right.*|top)`,
     properties: ['-o-object-position', 'object-position'],
   },
   {
-    regex: regExp(`object-(contain|cover|fill|none|scale-down)`),
+    regex: `object-(contain|cover|fill|none|scale-down)`,
     properties: ['-o-object-fit', 'object-fit'],
   },
   {
-    regex: regExp(`stroke-${number}`),
+    regex: `stroke-${number}`,
     properties: ['stroke-width'],
   },
   {
-    regex: regExp(`stroke-current`),
+    regex: `stroke-current`,
     properties: ['stroke'],
   },
   {
-    regex: regExp(`fill-current`),
+    regex: `fill-current`,
     properties: ['fill'],
   },
   {
-    regex: regExp(`bg-origin-${dashNumbersOrLetters}`),
+    regex: `bg-origin-${dashNumbersOrLetters}`,
     properties: ['background-origin'],
   },
   {
-    regex: regExp(`bg-(no-)?repeat${maybeDashNumbersOrLetters}`),
+    regex: `bg-(no-)?repeat${maybeDashNumbersOrLetters}`,
     properties: ['background-repeat'],
   },
   {
-    regex: regExp(`bg-(bottom|center|left.*|right.*|top)`),
+    regex: `bg-(bottom|center|left.*|right.*|top)`,
     properties: ['background-position'],
   },
   {
-    regex: regExp(`bg-clip-text`),
+    regex: `bg-clip-text`,
     properties: ['-webkit-background-clip', 'background-clip'],
   },
   {
-    regex: regExp(`bg-clip-(border|padding|content)`),
+    regex: `bg-clip-(border|padding|content)`,
     properties: ['background-clip'],
   },
   {
-    regex: regExp(`bg-(fixed|local|scroll)`),
+    regex: `bg-(fixed|local|scroll)`,
     properties: ['background-attachment'],
   },
   {
-    regex: regExp(`bg-(auto|cover|contain)`),
+    regex: `bg-(auto|cover|contain)`,
     properties: ['background-size'],
   },
   {
-    regex: regExp(`decoration-(slice|clone)`),
+    regex: `decoration-(slice|clone)`,
     properties: ['-webkit-box-decoration-break', 'box-decoration-break'],
   },
   {
-    regex: regExp(`to-${dashNumbersOrLetters}`),
+    regex: `to-${dashNumbersOrLetters}`,
     properties: ['--tw-gradient-to'],
   },
   {
-    regex: regExp(`via-${dashNumbersOrLetters}`),
+    regex: `via-${dashNumbersOrLetters}`,
     properties: ['--tw-gradient-stops'],
   },
   {
-    regex: regExp(`from-${dashNumbersOrLetters}`),
+    regex: `from-${dashNumbersOrLetters}`,
     properties: ['--tw-gradient-from', '--tw-gradient-stops'],
   },
   {
-    regex: regExp(`bg-(none|gradient-to-${dashNumbersOrLetters})`),
+    regex: `bg-(none|gradient-to-${dashNumbersOrLetters})`,
     properties: ['background-image'],
   },
   {
-    regex: regExp(`bg-opacity-${number}`),
+    regex: `bg-opacity-${number}`,
     properties: ['--tw-bg-opacity'],
   },
   {
-    regex: regExp(`bg-(transparent|current)`),
+    regex: `bg-(transparent|current)`,
     properties: ['background-color'],
   },
   {
-    regex: regExp(`bg-${dashNumbersOrLetters}`),
+    regex: `bg-${dashNumbersOrLetters}`,
     properties: ['--tw-bg-opacity', 'background-color'],
   },
   {
-    regex: regExp(`border-opacity-${number}`),
+    regex: `border-opacity-${number}`,
     properties: ['--tw-border-opacity'],
   },
   {
-    regex: regExp(`border-l${maybeDashNumber}`),
+    regex: `border-l${maybeDashNumber}`,
     properties: ['border-left-width'],
   },
   {
-    regex: regExp(`border-b${maybeDashNumber}`),
+    regex: `border-b${maybeDashNumber}`,
     properties: ['border-bottom-width'],
   },
   {
-    regex: regExp(`border-r${maybeDashNumber}`),
+    regex: `border-r${maybeDashNumber}`,
     properties: ['border-right-width'],
   },
   {
-    regex: regExp(`border-t${maybeDashNumber}`),
+    regex: `border-t${maybeDashNumber}`,
     properties: ['border-top-width'],
   },
   {
-    regex: regExp(`(divide-transparent|divide-current|border-transparent|border-current)`),
+    regex: `(divide-transparent|divide-current|border-transparent|border-current)`,
     properties: ['border-color'],
   },
   {
-    regex: regExp(`(divide|border)-(solid|dashed|dotted|double|none)`),
+    regex: `(divide|border)-(solid|dashed|dotted|double|none)`,
     properties: ['border-style'],
   },
   {
-    regex: regExp(`border-(collapse|separate)`),
+    regex: `border-(collapse|separate)`,
     properties: ['border-collapse'],
   },
   {
-    regex: regExp(`border${maybeDashNumber}`),
+    regex: `border${maybeDashNumber}`,
     properties: ['border-width'],
   },
   {
-    regex: regExp(`border-${dashNumbersOrLetters}`),
+    regex: `border-${dashNumbersOrLetters}`,
     properties: ['--tw-border-opacity', 'border-color'],
   },
   {
-    regex: regExp(`rounded-bl${maybeDashNumbersOrLetters}`),
+    regex: `rounded-bl${maybeDashNumbersOrLetters}`,
     properties: ['border-bottom-left-radius'],
   },
   {
-    regex: regExp(`rounded-br${maybeDashNumbersOrLetters}`),
+    regex: `rounded-br${maybeDashNumbersOrLetters}`,
     properties: ['border-bottom-right-radius'],
   },
   {
-    regex: regExp(`rounded-tr${maybeDashNumbersOrLetters}`),
+    regex: `rounded-tr${maybeDashNumbersOrLetters}`,
     properties: ['border-top-right-radius'],
   },
   {
-    regex: regExp(`rounded-tl${maybeDashNumbersOrLetters}`),
+    regex: `rounded-tl${maybeDashNumbersOrLetters}`,
     properties: ['border-top-left-radius'],
   },
   {
-    regex: regExp(`rounded-l${maybeDashNumbersOrLetters}`),
+    regex: `rounded-l${maybeDashNumbersOrLetters}`,
     properties: ['border-bottom-left-radius', 'border-top-left-radius'],
   },
   {
-    regex: regExp(`rounded-b${maybeDashNumbersOrLetters}`),
+    regex: `rounded-b${maybeDashNumbersOrLetters}`,
     properties: ['border-bottom-left-radius', 'border-bottom-right-radius'],
   },
   {
-    regex: regExp(`rounded-r${maybeDashNumbersOrLetters}`),
+    regex: `rounded-r${maybeDashNumbersOrLetters}`,
     properties: ['border-bottom-right-radius', 'border-top-right-radius'],
   },
   {
-    regex: regExp(`rounded-t${maybeDashNumbersOrLetters}`),
+    regex: `rounded-t${maybeDashNumbersOrLetters}`,
     properties: ['border-top-left-radius', 'border-top-right-radius'],
   },
   {
-    regex: regExp(`rounded${maybeDashNumbersOrLetters}`),
+    regex: `rounded${maybeDashNumbersOrLetters}`,
     properties: ['border-radius'],
   },
   {
-    regex: regExp(`break-all`),
+    regex: `break-all`,
     properties: ['word-break'],
   },
   {
-    regex: regExp(`break-words`),
+    regex: `break-words`,
     properties: ['overflow-wrap'],
   },
   {
-    regex: regExp(`break-normal`),
+    regex: `break-normal`,
     properties: ['overflow-wrap', 'word-break'],
   },
   {
-    regex: regExp(`whitespace-(normal|nowrap|pre|pre-line|pre-wrap)`),
+    regex: `whitespace-(normal|nowrap|pre|pre-line|pre-wrap)`,
     properties: ['white-space'],
   },
   {
-    regex: regExp(`overflow-(clip|ellipsis)`),
+    regex: `overflow-(clip|ellipsis)`,
     properties: ['text-overflow'],
   },
   {
-    regex: regExp(`truncate`),
+    regex: `truncate`,
     properties: ['overflow', 'text-overflow', 'white-space'],
   },
   {
-    regex: regExp(`overscroll-x-(auto|contain|none)`),
+    regex: `overscroll-x-(auto|contain|none)`,
     properties: ['overscroll-behavior-x'],
   },
   {
-    regex: regExp(`overscroll-y-(auto|contain|none)`),
+    regex: `overscroll-y-(auto|contain|none)`,
     properties: ['overscroll-behavior-y'],
   },
   {
-    regex: regExp(`overscroll-(auto|contain|none)`),
+    regex: `overscroll-(auto|contain|none)`,
     properties: ['-ms-scroll-chaining', 'overscroll-behavior'],
   },
   {
-    regex: regExp(`overflow-y-(auto|hidden|visible|scroll)`),
+    regex: `overflow-y-(auto|hidden|visible|scroll)`,
     properties: ['overflow-y'],
   },
   {
-    regex: regExp(`overflow-x-(auto|hidden|visible|scroll)`),
+    regex: `overflow-x-(auto|hidden|visible|scroll)`,
     properties: ['overflow-x'],
   },
   {
-    regex: regExp(`overflow-(auto|hidden|visible|scroll)`),
+    regex: `overflow-(auto|hidden|visible|scroll)`,
     properties: ['overflow'],
   },
   {
-    regex: regExp(`justify-self-(auto|start|end|center|stretch)`),
+    regex: `justify-self-(auto|start|end|center|stretch)`,
     properties: ['justify-self'],
   },
   {
-    regex: regExp(`self-(auto|start|end|center|stretch|baseline)`),
+    regex: `self-(auto|start|end|center|stretch|baseline)`,
     properties: ['align-self'],
   },
   {
-    regex: regExp(`place-self-(auto|start|end|center|stretch)`),
+    regex: `place-self-(auto|start|end|center|stretch)`,
     properties: ['place-self'],
   },
   {
-    regex: regExp(`divide-opacity-${number}`),
+    regex: `divide-opacity-${number}`,
     properties: ['--tw-divide-opacity'],
   },
 
   {
-    regex: regExp(`divide-x-reverse`),
+    regex: `divide-x-reverse`,
     properties: ['--tw-divide-x-reverse'],
   },
   {
-    regex: regExp(`divide-y-reverse`),
+    regex: `divide-y-reverse`,
     properties: ['--tw-divide-y-reverse'],
   },
   {
-    regex: regExp(`divide-y${maybeDashNumber}`),
+    regex: `divide-y${maybeDashNumber}`,
     properties: ['--tw-divide-y-reverse', 'border-bottom-width', 'border-top-width'],
   },
   {
-    regex: regExp(`divide-x${maybeDashNumber}`),
+    regex: `divide-x${maybeDashNumber}`,
     properties: ['--tw-divide-x-reverse', 'border-left-width', 'border-right-width'],
   },
   {
-    regex: regExp(`divide-${dashNumbersOrLetters}`),
+    regex: `divide-${dashNumbersOrLetters}`,
     properties: ['--tw-divide-opacity', 'border-color'],
   },
   {
-    regex: regExp(`space-x-reverse`),
+    regex: `space-x-reverse`,
     properties: ['--tw-space-x-reverse'],
   },
   {
-    regex: regExp(`space-y-reverse`),
+    regex: `space-y-reverse`,
     properties: ['--tw-space-y-reverse'],
   },
   {
-    regex: regExp(`-?space-y-${numbersOrLetters}`),
+    regex: `-?space-y-${numbersOrLetters}`,
     properties: ['--tw-space-y-reverse', 'margin-bottom', 'margin-top'],
   },
   {
-    regex: regExp(`-?space-x-${numbersOrLetters}`),
+    regex: `-?space-x-${numbersOrLetters}`,
     properties: ['--tw-space-x-reverse', 'margin-left', 'margin-right'],
   },
   {
-    regex: regExp(`gap-y-${numbersOrLetters}`),
+    regex: `gap-y-${numbersOrLetters}`,
     properties: ['row-gap'],
   },
   {
-    regex: regExp(`gap-x-${numbersOrLetters}`),
+    regex: `gap-x-${numbersOrLetters}`,
     properties: ['-moz-column-gap', 'column-gap'],
   },
   {
-    regex: regExp(`gap-${numbersOrLetters}`),
+    regex: `gap-${numbersOrLetters}`,
     properties: ['gap'],
   },
   {
-    regex: regExp(`justify-items-(start|end|center|stretch)`),
+    regex: `justify-items-(start|end|center|stretch)`,
     properties: ['justify-items'],
   },
   {
-    regex: regExp(`justify-(start|end|center|between|around|evenly)`),
+    regex: `justify-(start|end|center|between|around|evenly)`,
     properties: ['justify-content'],
   },
   {
-    regex: regExp(`items-(start|end|center|baseline|stretch)`),
+    regex: `items-(start|end|center|baseline|stretch)`,
     properties: ['align-items'],
   },
   {
-    regex: regExp(`content-(center|start|end|between|around|evenly)`),
+    regex: `content-(center|start|end|between|around|evenly)`,
     properties: ['align-content'],
   },
   {
-    regex: regExp(`place-items-(start|end|center|stretch)`),
+    regex: `place-items-(start|end|center|stretch)`,
     properties: ['place-items'],
   },
   {
-    regex: regExp(`place-content-(center|start|end|between|around|evenly|stretch)`),
+    regex: `place-content-(center|start|end|between|around|evenly|stretch)`,
     properties: ['place-content'],
   },
   {
-    regex: regExp(`flex-(wrap|wrap-reverse|nowrap)`),
+    regex: `flex-(wrap|wrap-reverse|nowrap)`,
     properties: ['flex-wrap'],
   },
   {
-    regex: regExp(`flex-(row|row-reverse|col|col-reverse)`),
+    regex: `flex-(row|row-reverse|col|col-reverse)`,
     properties: ['flex-direction'],
   },
   {
-    regex: regExp(`grid-rows-${numbersOrLetters}`),
+    regex: `grid-rows-${numbersOrLetters}`,
     properties: ['grid-template-rows'],
   },
   {
-    regex: regExp(`grid-cols-${dashNumbersOrLetters}`),
+    regex: `grid-cols-${dashNumbersOrLetters}`,
     properties: ['grid-template-columns'],
   },
   {
-    regex: regExp(`auto-rows-${dashNumbersOrLetters}`),
+    regex: `auto-rows-${dashNumbersOrLetters}`,
     properties: ['grid-auto-rows'],
   },
   {
-    regex: regExp(`grid-flow-${dashNumbersOrLetters}`),
+    regex: `grid-flow-${dashNumbersOrLetters}`,
     properties: ['grid-auto-flow'],
   },
   {
-    regex: regExp(`auto-cols-${dashNumbersOrLetters}`),
+    regex: `auto-cols-${dashNumbersOrLetters}`,
     properties: ['grid-auto-columns'],
   },
   {
-    regex: regExp(`appearance-none`),
+    regex: `appearance-none`,
     properties: ['-moz-appearance', '-webkit-appearance', 'appearance'],
   },
   {
-    regex: regExp(`list-(none|disc|decimal)`),
+    regex: `list-(none|disc|decimal)`,
     properties: ['list-style-type'],
   },
   {
-    regex: regExp(`list-(inside|outside)`),
+    regex: `list-(inside|outside)`,
     properties: ['list-style-position'],
   },
   {
-    regex: regExp(`resize(-none|-y|-x)?`),
+    regex: `resize(-none|-y|-x)?`,
     properties: ['resize'],
   },
   {
-    regex: regExp(`select-all`),
+    regex: `select-all`,
     properties: ['-moz-user-select', '-webkit-user-select', 'user-select'],
   },
   {
-    regex: regExp(`select-(none|text|auto)`),
+    regex: `select-(none|text|auto)`,
     properties: ['-moz-user-select', '-ms-user-select', '-webkit-user-select', 'user-select'],
   },
   {
-    regex: regExp(`cursor-${dashNumbersOrLetters}`),
+    regex: `cursor-${dashNumbersOrLetters}`,
     properties: ['cursor'],
   },
   {
-    regex: regExp(`animate-${dashNumbersOrLetters}`),
+    regex: `animate-${dashNumbersOrLetters}`,
     properties: ['-webkit-animation', 'animation'],
   },
   {
-    regex: regExp(`scale-y-${number}`),
+    regex: `scale-y-${number}`,
     properties: ['--tw-scale-y'],
   },
   {
-    regex: regExp(`scale-x-${number}`),
+    regex: `scale-x-${number}`,
     properties: ['--tw-scale-x'],
   },
   {
-    regex: regExp(`scale-${number}`),
+    regex: `scale-${number}`,
     properties: ['--tw-scale-x', '--tw-scale-y'],
   },
   {
-    regex: regExp(`-?skew-y-${number}`),
+    regex: `-?skew-y-${number}`,
     properties: ['--tw-skew-y'],
   },
   {
-    regex: regExp(`-?skew-x-${number}`),
+    regex: `-?skew-x-${number}`,
     properties: ['--tw-skew-x'],
   },
   {
-    regex: regExp(`-?rotate-${number}`),
+    regex: `-?rotate-${number}`,
     properties: ['--tw-rotate'],
   },
   {
-    regex: regExp(`-?translate-y-${numbersOrLetters}`),
+    regex: `-?translate-y-${numbersOrLetters}`,
     properties: ['--tw-translate-y'],
   },
   {
-    regex: regExp(`-?translate-x-${numbersOrLetters}`),
+    regex: `-?translate-x-${numbersOrLetters}`,
     properties: ['--tw-translate-x'],
   },
   {
-    regex: regExp(`transform-none`),
+    regex: `transform-none`,
     properties: ['transform'],
   },
   {
-    regex: regExp(`transform(-gpu)?`),
+    regex: `transform(-gpu)?`,
     properties: ['--tw-rotate', '--tw-scale-x', '--tw-scale-y', '--tw-skew-x', '--tw-skew-y', '--tw-translate-x', '--tw-translate-y', 'transform'],
   },
   {
-    regex: regExp(`origin-${dashNumbersOrLetters}`),
+    regex: `origin-${dashNumbersOrLetters}`,
     properties: ['transform-origin'],
   },
-
   {
-    regex: regExp(`table-(auto|fixed)`),
+    regex: `table-(auto|fixed)`,
     properties: ['table-layout'],
   },
   {
-    regex: regExp(`flex-grow${maybeDashZero}`),
+    regex: `flex-grow${maybeDashZero}`,
     properties: ['flex-grow'],
   },
   {
-    regex: regExp(`flex-shrink${maybeDashZero}`),
+    regex: `flex-shrink${maybeDashZero}`,
     properties: ['flex-shrink'],
   },
   {
-    regex: regExp(`flex-${dashNumbersOrLetters}`),
+    regex: `flex-${dashNumbersOrLetters}`,
     properties: ['flex'],
   },
   {
-    regex: regExp(`max-w-${dashNumbersOrLetters}`),
+    regex: `max-w-${dashNumbersOrLetters}`,
     properties: ['max-width'],
   },
   {
-    regex: regExp(`min-w-${dashNumbersOrLetters}`),
+    regex: `min-w-${dashNumbersOrLetters}`,
     properties: ['min-width'],
   },
   {
-    regex: regExp(`w-${dashNumbersOrLetters}`),
+    regex: `w-${dashNumbersOrLetters}`,
     properties: ['width'],
   },
   {
-    regex: regExp(`min-h-${dashNumbersOrLetters}`),
+    regex: `min-h-${dashNumbersOrLetters}`,
     properties: ['min-height'],
   },
   {
-    regex: regExp(`max-h-${dashNumbersOrLetters}`),
+    regex: `max-h-${dashNumbersOrLetters}`,
     properties: ['max-height'],
   },
   {
-    regex: regExp(`h-${dashNumbersOrLetters}`),
+    regex: `h-${dashNumbersOrLetters}`,
     properties: ['height'],
   },
   {
-    regex: regExp(
-      `(block|inline-block|inline|flex|inline-flex|table|inline-table|table-caption|table-cell|table-column|table-column-group|table-footer-group|table-header-group|table-row-group|table-row|flow-root|grid|inline-grid|contents|list-item|hidden)`,
-    ),
+    regex: `(block|inline-block|inline|flex|inline-flex|table|inline-table|table-caption|table-cell|table-column|table-column-group|table-footer-group|table-header-group|table-row-group|table-row|flow-root|grid|inline-grid|contents|list-item|hidden)`,
     properties: ['display'],
   },
   {
-    regex: regExp(`box-(border|content)`),
+    regex: `box-(border|content)`,
     properties: ['box-sizing'],
   },
   {
-    regex: regExp(`-?ml-${numbersOrLetters}`),
+    regex: `-?ml-${numbersOrLetters}`,
     properties: ['margin-left'],
   },
   {
-    regex: regExp(`-?mb-${numbersOrLetters}`),
+    regex: `-?mb-${numbersOrLetters}`,
     properties: ['margin-bottom'],
   },
   {
-    regex: regExp(`-?mr-${numbersOrLetters}`),
+    regex: `-?mr-${numbersOrLetters}`,
     properties: ['margin-right'],
   },
   {
-    regex: regExp(`-?mt-${numbersOrLetters}`),
+    regex: `-?mt-${numbersOrLetters}`,
     properties: ['margin-top'],
   },
   {
-    regex: regExp(`-?my-${numbersOrLetters}`),
+    regex: `-?my-${numbersOrLetters}`,
     properties: ['margin-bottom', 'margin-top'],
   },
   {
-    regex: regExp(`-?mx-${numbersOrLetters}`),
+    regex: `-?mx-${numbersOrLetters}`,
     properties: ['margin-left', 'margin-right'],
   },
   {
-    regex: regExp(`-?m-${numbersOrLetters}`),
+    regex: `-?m-${numbersOrLetters}`,
     properties: ['margin'],
   },
   {
-    regex: regExp(`clear-(left|right|both|none)`),
+    regex: `clear-(left|right|both|none)`,
     properties: ['clear'],
   },
   {
-    regex: regExp(`float-(right|left|none)`),
+    regex: `float-(right|left|none)`,
     properties: ['float'],
   },
   {
-    regex: regExp(`row-end-${numbersOrLetters}`),
+    regex: `row-end-${numbersOrLetters}`,
     properties: ['grid-row-end'],
   },
   {
-    regex: regExp(`row-start-${numbersOrLetters}`),
+    regex: `row-start-${numbersOrLetters}`,
     properties: ['grid-row-start'],
   },
   {
-    regex: regExp(`row-(auto|span-${numbersOrLetters})`),
+    regex: `row-(auto|span-${numbersOrLetters})`,
     properties: ['grid-row'],
   },
   {
-    regex: regExp(`col-end-${numbersOrLetters}`),
+    regex: `col-end-${numbersOrLetters}`,
     properties: ['grid-column-end'],
   },
   {
-    regex: regExp(`col-start-${numbersOrLetters}`),
+    regex: `col-start-${numbersOrLetters}`,
     properties: ['grid-column-start'],
   },
   {
-    regex: regExp(`col-(auto|span-${numbersOrLetters})`),
+    regex: `col-(auto|span-${numbersOrLetters})`,
     properties: ['grid-column'],
   },
   {
-    regex: regExp(`order-${numbersOrLetters}`),
+    regex: `order-${numbersOrLetters}`,
     properties: ['order'],
   },
   {
-    regex: regExp(`z-${numbersOrLetters}`),
+    regex: `z-${numbersOrLetters}`,
     properties: ['z-index'],
   },
   {
-    regex: regExp(`(isolate|isolation-auto)`),
+    regex: `(isolate|isolation-auto)`,
     properties: ['isolation'],
   },
   {
-    regex: regExp(`-?left-${dashNumbersOrLetters}`),
+    regex: `-?left-${dashNumbersOrLetters}`,
     properties: ['left'],
   },
   {
-    regex: regExp(`-?bottom-${dashNumbersOrLetters}`),
+    regex: `-?bottom-${dashNumbersOrLetters}`,
     properties: ['bottom'],
   },
   {
-    regex: regExp(`-?right-${dashNumbersOrLetters}`),
+    regex: `-?right-${dashNumbersOrLetters}`,
     properties: ['right'],
   },
   {
-    regex: regExp(`-?top-${dashNumbersOrLetters}`),
+    regex: `-?top-${dashNumbersOrLetters}`,
     properties: ['top'],
   },
   {
-    regex: regExp(`-?inset-y-${dashNumbersOrLetters}`),
+    regex: `-?inset-y-${dashNumbersOrLetters}`,
     properties: ['bottom', 'top'],
   },
   {
-    regex: regExp(`-?inset-x-${dashNumbersOrLetters}`),
+    regex: `-?inset-x-${dashNumbersOrLetters}`,
     properties: ['left', 'right'],
   },
   {
-    regex: regExp(`-?inset-${dashNumbersOrLetters}`),
+    regex: `-?inset-${dashNumbersOrLetters}`,
     properties: ['bottom', 'left', 'right', 'top'],
   },
   {
-    regex: regExp(`(static|fixed|absolute|relative|sticky)`),
+    regex: `(static|fixed|absolute|relative|sticky)`,
     properties: ['position'],
   },
   {
-    regex: regExp(`(visible|invisible)`),
+    regex: `(visible|invisible)`,
     properties: ['visibility'],
   },
   {
-    regex: regExp(`pointer-events-(none|auto)`),
+    regex: `pointer-events-(none|auto)`,
     properties: ['pointer-events'],
   },
   {
-    regex: regExp(`not-sr-only`),
+    regex: `not-sr-only`,
     properties: ['clip', 'height', 'margin', 'overflow', 'padding', 'position', 'white-space', 'width'],
   },
   {
-    regex: regExp(`sr-only`),
+    regex: `sr-only`,
     properties: ['border-width', 'clip', 'height', 'margin', 'overflow', 'padding', 'position', 'white-space', 'width'],
   },
 ]
+
+export const getRules = ({ prefix } = { prefix: '' }) => {
+  return rules.map((rule) => ({ regex: new RegExp(`^${prefix}${rule.regex}$`), properties: rule.properties }))
+}
