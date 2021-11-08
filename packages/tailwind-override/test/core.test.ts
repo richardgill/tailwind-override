@@ -1,5 +1,9 @@
-import { overrideTailwindClasses } from '../src/core'
-import defaultTailwindcssProperties from '../src/tailwindcssProperties.json'
+/**
+ * @group unit
+ */
+
+import { overrideTailwindClasses } from '../src/useCssProperties/core'
+import defaultTailwindcssProperties from '../src/useCssProperties/tailwindcssProperties.json'
 
 import { defaultTestCases } from './defaultTests'
 

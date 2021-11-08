@@ -22,7 +22,10 @@
     "lint:watch": "nodemon --watch src --exec \"yarn run lint:without:prettier\"",
     "lint:without:prettier": "yarn run lint:js:without:prettier",
     "prepublish": "npm run build",
+    "generate:properties": "ts-node bin/findTailwindClasses.ts",
     "test": "jest",
+    "test:unit": "jest --group=unit",
+    "test:slow": "jest --group=slow",
     "test:watch": "nodemon -w ./src -w ./test -e ts,tsx --exec 'yarn run test'"
   },
   "devDependencies": {
@@ -38,14 +41,17 @@
     "eslint-plugin-prettier": "^2.0.1",
     "husky": "^1.0.1",
     "jest": "^27.0.6",
+    "jest-runner-groups": "^2.1.0",
     "lint-staged": "^7.3.0",
     "lodash": "^4.17.12",
     "nodemon": "^1.19.4",
     "prettier": "^2.3.2",
+    "seedrandom": "^3.0.5",
     "sort-package-json": "^1.15.0",
     "tailwindcss": "^1.8.9",
     "ts-jest": "^27.0.4",
-    "typescript": "^3.8.3"
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   },
   "lint-staged": {
     "{src,test}/**/*.{j,t}s": [
