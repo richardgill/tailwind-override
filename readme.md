@@ -55,7 +55,9 @@ overrideTailwindClasses('pt-2 pt-4')
 Problem:
 
 ```jsx
-const Text = props => <p className={`text-pink-200 ${props.className}`}>{props.children}</p>
+const Text = (props) => {
+  return <p className={`text-pink-200 ${props.className}`}>{props.children}</p>
+}
 
 <Text className="text-blue-200">Hello</Text> // Not obvious if this will render pink or blue???
 ```
@@ -63,7 +65,9 @@ const Text = props => <p className={`text-pink-200 ${props.className}`}>{props.c
 Solution:
 
 ```jsx
-const Text = props => <p className={overrideTailwindClasses(`text-pink-200 ${props.className}`)}>{props.children}</p>
+const Text = (props) => {
+  return <p className={overrideTailwindClasses(`text-pink-200 ${props.className}`)}>{props.children}</p>
+}
 
 <Text className="text-blue-200">Hello</Text> // this is blue!
 ```
