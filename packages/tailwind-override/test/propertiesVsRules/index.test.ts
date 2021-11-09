@@ -8,15 +8,16 @@ import { findTailwindProperties } from '../../src/index'
 import { cssToProperties } from './cssToProperties'
 
 const testCases = [
-  { tailwindCommandOptions: `` },
-  { tailwindCommandOptions: `-c test/propertiesVsRules/prefixConfig.js`, options: { prefix: 'my-prefix-' } },
-  { tailwindCommandOptions: `-c test/propertiesVsRules/extraColors.js` },
+  { name: 'vanilla', tailwindCommandOptions: `` },
+  { name: 'prefixes', tailwindCommandOptions: `-c test/propertiesVsRules/prefixConfig.js`, options: { prefix: 'my-prefix-' } },
+  { name: 'extraColors', tailwindCommandOptions: `-c test/propertiesVsRules/extraColors.js` },
+  { name: 'jit', tailwindCommandOptions: `--jit` },
 ]
 
 for (const testCase of testCases) {
-  test(`${testCase.tailwindCommandOptions}`, () => {
+  test(testCase.name, () => {
     const cssFile = `/tmp/${uuidv4()}.css`
-    const generateTailwindCssFileCommand = `npx --yes tailwindcss-cli@latest -o ${cssFile}`
+    const generateTailwindCssFileCommand = `npx --yes tailwindcss@latest build -o ${cssFile}`
     console.log(`${generateTailwindCssFileCommand} ${testCase.tailwindCommandOptions}`)
     execSync(`${generateTailwindCssFileCommand} ${testCase.tailwindCommandOptions}`)
     const tailwindPropertiesJson = cssToProperties(cssFile)

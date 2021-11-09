@@ -27,7 +27,6 @@ const isTailwindClash = (classA, classB, options) => {
   const premableB = tailWindPremable(classB)
   const classAProperties = findTailwindProperties(stripTailwindPremable(classA), options)
   const classBProperties = findTailwindProperties(stripTailwindPremable(classB), options)
-  console.log({ classA, classB, premableA, premableB, classAProperties, classBProperties, stripped: stripTailwindPremable(classB), options })
   return classAProperties && classBProperties && premableA === premableB && classAProperties.some((property) => classBProperties.includes(property))
 }
 
