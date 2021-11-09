@@ -2,9 +2,9 @@
  * @group unit
  */
 
-import { overrideTailwindClasses } from '../src/useCssProperties/index'
+import { overrideTailwindClasses } from '../../src/useCssProperties/index'
 
-import { defaultTestCases } from './defaultTests'
+import { defaultTestCases } from '../testCases'
 
 for (const testCase of defaultTestCases) {
   test(`overrideTailwindClasses('${testCase.input}') returns '${testCase.expectedOutput}'`, () => {

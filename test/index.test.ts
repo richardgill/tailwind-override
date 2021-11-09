@@ -4,7 +4,7 @@
 
 import { overrideTailwindClasses } from '../src/index'
 
-import { defaultTestCases, ruleBasedTestCases } from './defaultTests'
+import { defaultTestCases, ruleBasedTestCases } from './testCases'
 
 for (const testCase of [...defaultTestCases, ...ruleBasedTestCases]) {
   test(`overrideTailwindClasses('${testCase.input}') returns '${testCase.expectedOutput}'`, () => {
