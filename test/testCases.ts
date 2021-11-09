@@ -1,4 +1,6 @@
-export const defaultTestCases: { input: string; expectedOutput: string; options?: Object }[] = [
+type TestCase = { input: string; expectedOutput: string; options?: Object }
+
+export const defaultTestCases: TestCase[] = [
   { input: '', expectedOutput: '' },
   { input: 'apple oranges', expectedOutput: 'apple oranges' },
   { input: 'apple   oranges', expectedOutput: 'apple oranges' },
@@ -22,4 +24,10 @@ export const defaultTestCases: { input: string; expectedOutput: string; options?
   { input: 'sm:px-4 md:px-6 lg:px-8', expectedOutput: 'sm:px-4 md:px-6 lg:px-8' },
   { input: 'sm:px-4 sm:px-6', expectedOutput: 'sm:px-6' },
   { input: 'sm:container md:container lg:container', expectedOutput: 'sm:container md:container lg:container' },
+  { input: '-inset-y-2.5 inset-y-8', expectedOutput: 'inset-y-8' },
+]
+
+export const ruleBasedTestCases: TestCase[] = [
+  // made up color
+  { input: 'bg-yellow-600 bg-mud-brown-700', expectedOutput: 'bg-mud-brown-700' },
 ]

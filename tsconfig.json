@@ -9,6 +9,14 @@
     "declaration": true,
     "resolveJsonModule": true,
     "noImplicitAny": false,
-    "lib": ["es6", "dom", "es2017"]
-  }
+    "lib": ["es6", "dom", "es2019"],
+    "outDir": "./lib"
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "test/**/*"
+  ]
 }

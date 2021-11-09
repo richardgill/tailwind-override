@@ -1,8 +1,67 @@
 {
-  "name": "tailwind-override-lerna",
-  "version": "0.0.1",
+  "name": "tailwind-override",
+  "version": "0.4.0",
+  "description": "Override clashing tailwind classes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardgill/tailwind-override"
+  },
   "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "check:node": "check-node-version --package",
+    "ci": "tsc --noEmit && yarn run lint:js && yarn run test",
+    "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check",
+    "format:js": "prettier --write \"{src,test}/**/*.{t,j}s\"",
+    "generate:properties": "ts-node bin/findTailwindClasses.ts",
+    "lint": "yarn run lint:js",
+    "lint:js": "eslint ./src ./test --ext=js,ts",
+    "lint:js:without:prettier": "yarn run lint:js -- --rule 'prettier/prettier: 0'",
+    "lint:watch": "nodemon --watch src --exec \"yarn run lint:without:prettier\"",
+    "lint:without:prettier": "yarn run lint:js:without:prettier",
+    "precommit": "lint-staged && yarn run lint",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:slow": "jest --group=slow",
+    "test:unit": "jest --group=unit",
+    "test:watch": "nodemon -w ./src -w ./test -e ts,tsx --exec 'yarn run test'"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.{j,t}s": [
+      "prettier --write",
+      "git add"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ]
+  },
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "@types/jest": "^26.0.24",
+    "@types/lodash": "^4.14.150",
+    "@types/node": "^14.10.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "css": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-prettier": "^2.0.1",
+    "husky": "^1.0.1",
+    "jest": "^27.0.6",
+    "jest-runner-groups": "^2.1.0",
+    "lint-staged": "^7.3.0",
+    "lodash": "^4.17.12",
+    "nodemon": "^1.19.4",
+    "prettier": "^2.3.2",
+    "seedrandom": "^3.0.5",
+    "sort-package-json": "^1.15.0",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4",
+    "uuid": "^8.3.2"
   }
 }
