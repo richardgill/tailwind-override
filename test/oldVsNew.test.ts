@@ -1,3 +1,6 @@
+/**
+ * @group slow
+ */
 import seedrandom from 'seedrandom'
 import _ from 'lodash'
 import { overrideTailwindClasses, TailWindCssProperties } from '../src/useCssProperties/core'

@@ -1,7 +1,6 @@
 /**
  * @group unit
  */
-
 import { overrideTailwindClasses } from '../src/index'
 
 import { defaultTestCases, ruleBasedTestCases } from './testCases'

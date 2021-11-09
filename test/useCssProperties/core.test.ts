@@ -1,7 +1,6 @@
 /**
  * @group unit
  */
-
 import { overrideTailwindClasses, TailWindCssProperties } from '../../src/useCssProperties/core'
 import defaultTailwindcssProperties from '../../src/useCssProperties/tailwindcssProperties.json'
 
