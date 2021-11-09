@@ -1,12 +1,22 @@
 /**
  * @group unit
  */
-import { overrideTailwindClasses } from '../src/index'
+import { Options, overrideTailwindClasses } from '../src/index'
 
-import { defaultTestCases, ruleBasedTestCases } from './testCases'
+import { defaultTestCases, ruleBasedTestCases, jitTestCases } from './testCases'
 
-for (const testCase of [...defaultTestCases, ...ruleBasedTestCases]) {
-  test(`overrideTailwindClasses('${testCase.input}') returns '${testCase.expectedOutput}'`, () => {
-    expect(overrideTailwindClasses(testCase.input, testCase.options)).toBe(testCase.expectedOutput)
+const nonJitTestCases = [...defaultTestCases, ...ruleBasedTestCases].flatMap((testCase) => {
+  return [false, true].map((jit) => ({
+    ...testCase,
+    options: {
+      ...testCase.options,
+      jit: jit,
+    },
+  }))
+})
+
+for (const testCase of [...nonJitTestCases, ...jitTestCases]) {
+  test(`overrideTailwindClasses('${testCase.input}', ${testCase.options}) returns '${testCase.expectedOutput}'`, () => {
+    expect(overrideTailwindClasses(testCase.input, testCase.options as Options)).toBe(testCase.expectedOutput)
   })
 }

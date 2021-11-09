@@ -5,6 +5,8 @@ A function to remove clashing Tailwindcss classes, where the right-most one wins
 Examples:
 
 ```js
+import { overrideTailwindClasses } from 'tailwind-override'
+
 overrideTailwindClasses('pt-2 pt-4')
 // => 'pt-4'
 
@@ -16,6 +18,12 @@ overrideTailwindClasses('text-pink-200 pt-2')
 
 overrideTailwindClasses('orange apple')
 // => 'orange apple' (not tailwind classes)
+
+overrideTailwindClasses('dark:md:text-pink-200 dark:md:text-blue-200')
+// => 'md:text-pink-200 md:text-blue-200'
+
+overrideTailwindClasses('text-pink-500 !text-[#ffaa11]/25')
+// => '!text-[#ffaa11]/25'
 ```
 
 This helps define React Components where tailwind classes are overrideable.
@@ -26,7 +34,9 @@ This helps define React Components where tailwind classes are overrideable.
 
 ✅ Supports prefixes & variants e.g. `md:*`
 
-✅ Small bundle size
+✅ Supports tailwind's jit syntax e.g: `text-[#ffaa11]`
+
+✅ Small bundle size (~31KB out the box)
 
 ## Usage
 
@@ -76,39 +86,11 @@ overrideTailwindClasses('prefix-pt-2 prefix-pt-4', { prefix: 'prefix-' })
 // => 'prefix-pt-4'
 ```
 
-## Variants
+## Without tailwind jit
 
 Supports Tailwinds 'variants' functionality.
 
 ```js
-overrideTailwindClasses('md:bg-red-500 md:bg-white')
-// => 'md:bg-white'
-```
-
-## Bundle size
-
-tailwind-override-cli does analysis of your `.css` and generates a `.json` file.
-
-Out of the box `tailwind-override` it comes preloaded with a file `tailwindcssProperties.json` which contains all the tailwind classes - this is ~116KB.
-
-You can avoid adding this large `.json` file to your bundle by instead importing: `tailwind-override/lib/core` and providing your own `.json` file which you can generate from your [purged tailwind css file](https://tailwindcss.com/docs/optimizing-for-production).
-
-### Generating your own `.json` file
-
-Example:
-
-```bash
-yarn add --dev tailwind-override-cli
-npx tailwindcss build -o myTailwind.css # to purge: NODE_ENV=production npx tailwindcss build -o myTailwind.css
-node_modules/.bin/tailwind-override --inputFile myTailwind.css --outputFile tailwindProperties.json
-```
-
-You can pass `tailwindProperties.json` as an option to the function:
-
-```js
-import { overrideTailwindClasses } from 'tailwind-override/lib/core' // avoids default .json file
-import tailwindProperties from './tailwindProperties.json'
-overrideTailwindClasses('text-blue-700 text-blue-750', {
-  tailwindProperties: tailwindProperties,
-})
+overrideTailwindClasses('!text-[#aabbcc]/5 !text-[#ffaa11]/25', { jit: false })
+// => '!text-[#aabbcc]/5 !text-[#ffaa11]/25'
 ```
