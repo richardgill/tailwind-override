@@ -24,7 +24,7 @@ const rules = [
   },
   {
     regex: `transition($|-all|-colors|-opacity|-shadow|-transform)`,
-    properties: ['transition-duration', 'transition-property', 'transition-timing-function'],
+    properties: ['transition-property'],
   },
   {
     regex: `transition-none`,
@@ -32,39 +32,39 @@ const rules = [
   },
   {
     regex: `backdrop-sepia${maybeDashZero}`,
-    properties: ['--tw-backdrop-sepia'],
+    properties: ['--transform-backdrop-sepia'],
   },
   {
     regex: `backdrop-saturate-${number}`,
-    properties: ['--tw-backdrop-saturate'],
+    properties: ['--transform-backdrop-saturate'],
   },
   {
     regex: `backdrop-opacity-${number}`,
-    properties: ['--tw-backdrop-opacity'],
+    properties: ['--transform-backdrop-opacity'],
   },
   {
     regex: `backdrop-invert${maybeDashZero}`,
-    properties: ['--tw-backdrop-invert'],
+    properties: ['--transform-backdrop-invert'],
   },
   {
     regex: `-?backdrop-hue-rotate-${number}`,
-    properties: ['--tw-backdrop-hue-rotate'],
+    properties: ['--transform-backdrop-hue-rotate'],
   },
   {
     regex: `backdrop-grayscale${maybeDashZero}`,
-    properties: ['--tw-backdrop-grayscale'],
+    properties: ['--transform-backdrop-grayscale'],
   },
   {
     regex: `backdrop-contrast-${number}`,
-    properties: ['--tw-backdrop-contrast'],
+    properties: ['--transform-backdrop-contrast'],
   },
   {
     regex: `backdrop-brightness-${number}`,
-    properties: ['--tw-backdrop-brightness'],
+    properties: ['--transform-backdrop-brightness'],
   },
   {
     regex: `backdrop-blur${maybeDashNumbersOrLetters}`,
-    properties: ['--tw-backdrop-blur'],
+    properties: ['--transform-backdrop-blur'],
   },
   {
     regex: `backdrop-filter-none`,
@@ -73,54 +73,54 @@ const rules = [
   {
     regex: `backdrop-filter`,
     properties: [
-      '--tw-backdrop-blur',
-      '--tw-backdrop-brightness',
-      '--tw-backdrop-contrast',
-      '--tw-backdrop-grayscale',
-      '--tw-backdrop-hue-rotate',
-      '--tw-backdrop-invert',
-      '--tw-backdrop-opacity',
-      '--tw-backdrop-saturate',
-      '--tw-backdrop-sepia',
+      '--transform-backdrop-blur',
+      '--transform-backdrop-brightness',
+      '--transform-backdrop-contrast',
+      '--transform-backdrop-grayscale',
+      '--transform-backdrop-hue-rotate',
+      '--transform-backdrop-invert',
+      '--transform-backdrop-opacity',
+      '--transform-backdrop-saturate',
+      '--transform-backdrop-sepia',
       '-webkit-backdrop-filter',
       'backdrop-filter',
     ],
   },
   {
     regex: `sepia${maybeDashZero}`,
-    properties: ['--tw-sepia'],
+    properties: ['--transform-sepia'],
   },
   {
     regex: `saturate-${number}`,
-    properties: ['--tw-saturate'],
+    properties: ['--transform-saturate'],
   },
   {
     regex: `invert${maybeDashZero}`,
-    properties: ['--tw-invert'],
+    properties: ['--transform-invert'],
   },
   {
     regex: `-?hue-rotate-${number}`,
-    properties: ['--tw-hue-rotate'],
+    properties: ['--transform-hue-rotate'],
   },
   {
     regex: `grayscale${maybeDashZero}`,
-    properties: ['--tw-grayscale'],
+    properties: ['--transform-grayscale'],
   },
   {
     regex: `drop-shadow${maybeDashNumbersOrLetters}`,
-    properties: ['--tw-drop-shadow'],
+    properties: ['--transform-drop-shadow'],
   },
   {
     regex: `contrast-${number}`,
-    properties: ['--tw-contrast'],
+    properties: ['--transform-contrast'],
   },
   {
     regex: `brightness-${number}`,
-    properties: ['--tw-brightness'],
+    properties: ['--transform-brightness'],
   },
   {
     regex: `blur${maybeDashNumbersOrLetters}`,
-    properties: ['--tw-blur'],
+    properties: ['--transform-blur'],
   },
   {
     regex: `filter-none`,
@@ -128,43 +128,54 @@ const rules = [
   },
   {
     regex: `filter`,
-    properties: ['--tw-blur', '--tw-brightness', '--tw-contrast', '--tw-drop-shadow', '--tw-grayscale', '--tw-hue-rotate', '--tw-invert', '--tw-saturate', '--tw-sepia', 'filter'],
+    properties: [
+      '--transform-blur',
+      '--transform-brightness',
+      '--transform-contrast',
+      '--transform-drop-shadow',
+      '--transform-grayscale',
+      '--transform-hue-rotate',
+      '--transform-invert',
+      '--transform-saturate',
+      '--transform-sepia',
+      'filter',
+    ],
   },
   {
     regex: `ring-offset-[A-Za-z].*`,
-    properties: ['--tw-ring-offset-color'],
+    properties: ['--transform-ring-offset-color'],
   },
   {
     regex: `ring${maybeDashNumber}`,
-    properties: ['--tw-ring-offset-shadow', '--tw-ring-shadow', 'box-shadow'],
+    properties: ['--transform-ring-offset-shadow', '--transform-ring-shadow', 'box-shadow'],
   },
   {
     regex: `ring-offset-${number}`,
-    properties: ['--tw-ring-offset-width'],
+    properties: ['--transform-ring-offset-width'],
   },
   {
     regex: `ring-opacity-${number}`,
-    properties: ['--tw-ring-opacity'],
+    properties: ['--transform-ring-opacity'],
   },
   {
     regex: `ring-(transparent|current)`,
-    properties: ['--tw-ring-color'],
+    properties: ['--transform-ring-color'],
   },
   {
     regex: `ring-inset`,
-    properties: ['--tw-ring-inset'],
+    properties: ['--transform-ring-inset'],
   },
   {
     regex: `ring-${dashNumbersOrLetters}`,
-    properties: ['--tw-ring-color', '--tw-ring-opacity'],
+    properties: ['--transform-ring-color', '--transform-ring-opacity'],
   },
   {
     regex: `outline-(none|white|black)`,
-    properties: ['outline', 'outline-offset'],
+    properties: ['outline'],
   },
   {
     regex: `shadow${maybeDashNumbersOrLetters}`,
-    properties: ['--tw-shadow', 'box-shadow'],
+    properties: ['box-shadow'],
   },
   {
     regex: `mix-blend-${dashNumbersOrLetters}`,
@@ -192,7 +203,7 @@ const rules = [
   },
   {
     regex: `text-opacity-${number}`,
-    properties: ['--tw-text-opacity'],
+    properties: ['--text-opacity'],
   },
   {
     regex: `text-(transparent|current)`,
@@ -200,7 +211,7 @@ const rules = [
   },
   {
     regex: `text-(xs|sm|base|lg|xl|\\dxl)`,
-    properties: ['font-size', 'line-height'],
+    properties: ['font-size'],
   },
   {
     regex: `text-(left|center|right|justify)`,
@@ -208,7 +219,7 @@ const rules = [
   },
   {
     regex: `text-${dashNumbersOrLetters}`,
-    properties: ['--tw-text-opacity', 'color'],
+    properties: ['--text-opacity', 'color'],
   },
   {
     regex: `tracking-${dashNumbersOrLetters}`,
@@ -220,19 +231,19 @@ const rules = [
   },
   {
     regex: `(diagonal-fractions|stacked-fractions)`,
-    properties: ['--tw-numeric-fraction'],
+    properties: ['--font-variant-numeric-fraction'],
   },
   {
     regex: `(proportional-nums|tabular-nums)`,
-    properties: ['--tw-numeric-spacing'],
+    properties: ['--font-variant-numeric-spacing'],
   },
   {
     regex: `(lining-nums|oldstyle-nums)`,
-    properties: ['--tw-numeric-figure'],
+    properties: ['--font-variant-numeric-figure'],
   },
   {
     regex: `slashed-zero`,
-    properties: ['--tw-slashed-zero'],
+    properties: ['--font-variant-numeric-slashed-zero'],
   },
   {
     regex: `normal-nums`,
@@ -240,7 +251,14 @@ const rules = [
   },
   {
     regex: `ordinal`,
-    properties: ['--tw-numeric-figure', '--tw-numeric-fraction', '--tw-numeric-spacing', '--tw-ordinal', '--tw-slashed-zero', 'font-variant-numeric'],
+    properties: [
+      '--font-variant-numeric-figure',
+      '--font-variant-numeric-fraction',
+      '--font-variant-numeric-ordinal',
+      '--font-variant-numeric-slashed-zero',
+      '--font-variant-numeric-spacing',
+      'font-variant-numeric',
+    ],
   },
   {
     regex: `(italic|not-italic)`,
@@ -344,15 +362,15 @@ const rules = [
   },
   {
     regex: `to-${dashNumbersOrLetters}`,
-    properties: ['--tw-gradient-to'],
+    properties: ['--gradient-to-color'],
   },
   {
     regex: `via-${dashNumbersOrLetters}`,
-    properties: ['--tw-gradient-stops'],
+    properties: ['--gradient-color-stops', '--gradient-via-color'],
   },
   {
     regex: `from-${dashNumbersOrLetters}`,
-    properties: ['--tw-gradient-from', '--tw-gradient-stops'],
+    properties: ['--gradient-color-stops', '--gradient-from-color'],
   },
   {
     regex: `bg-(none|gradient-to-${dashNumbersOrLetters})`,
@@ -360,7 +378,7 @@ const rules = [
   },
   {
     regex: `bg-opacity-${number}`,
-    properties: ['--tw-bg-opacity'],
+    properties: ['--bg-opacity'],
   },
   {
     regex: `bg-(transparent|current)`,
@@ -368,11 +386,11 @@ const rules = [
   },
   {
     regex: `bg-${dashNumbersOrLetters}`,
-    properties: ['--tw-bg-opacity', 'background-color'],
+    properties: ['--bg-opacity', 'background-color'],
   },
   {
     regex: `border-opacity-${number}`,
-    properties: ['--tw-border-opacity'],
+    properties: ['--border-opacity'],
   },
   {
     regex: `border-l${maybeDashNumber}`,
@@ -408,7 +426,7 @@ const rules = [
   },
   {
     regex: `border-${dashNumbersOrLetters}`,
-    properties: ['--tw-border-opacity', 'border-color'],
+    properties: ['--border-opacity', 'border-color'],
   },
   {
     regex: `rounded-bl${maybeDashNumbersOrLetters}`,
@@ -459,7 +477,7 @@ const rules = [
     properties: ['overflow-wrap', 'word-break'],
   },
   {
-    regex: `whitespace-(normal|nowrap|pre|pre-line|pre-wrap)`,
+    regex: `whitespace-(normal|no-wrap|pre|pre-line|pre-wrap)`,
     properties: ['white-space'],
   },
   {
@@ -508,59 +526,66 @@ const rules = [
   },
   {
     regex: `divide-opacity-${number}`,
-    properties: ['--tw-divide-opacity'],
+    properties: ['--divide-opacity'],
   },
-
   {
     regex: `divide-x-reverse`,
-    properties: ['--tw-divide-x-reverse'],
+    properties: ['--divide-x-reverse'],
   },
   {
     regex: `divide-y-reverse`,
-    properties: ['--tw-divide-y-reverse'],
+    properties: ['--divide-y-reverse'],
   },
   {
     regex: `divide-y${maybeDashNumber}`,
-    properties: ['--tw-divide-y-reverse', 'border-bottom-width', 'border-top-width'],
+    properties: ['--divide-y-reverse', 'border-bottom-width', 'border-top-width'],
   },
   {
     regex: `divide-x${maybeDashNumber}`,
-    properties: ['--tw-divide-x-reverse', 'border-left-width', 'border-right-width'],
+    properties: ['--divide-x-reverse', 'border-left-width', 'border-right-width'],
   },
   {
     regex: `divide-${dashNumbersOrLetters}`,
-    properties: ['--tw-divide-opacity', 'border-color'],
+    properties: ['--divide-opacity', 'border-color'],
   },
   {
     regex: `space-x-reverse`,
-    properties: ['--tw-space-x-reverse'],
+    properties: ['--space-x-reverse'],
   },
   {
     regex: `space-y-reverse`,
-    properties: ['--tw-space-y-reverse'],
+    properties: ['--space-y-reverse'],
   },
   {
     regex: `-?space-y-${numbersOrLetters}`,
-    properties: ['--tw-space-y-reverse', 'margin-bottom', 'margin-top'],
+    properties: ['--space-y-reverse', 'margin-bottom', 'margin-top'],
   },
   {
     regex: `-?space-x-${numbersOrLetters}`,
-    properties: ['--tw-space-x-reverse', 'margin-left', 'margin-right'],
+    properties: ['--space-x-reverse', 'margin-left', 'margin-right'],
   },
   {
     regex: `gap-y-${numbersOrLetters}`,
-    properties: ['row-gap'],
+    properties: ['grid-row-gap', 'row-gap'],
   },
   {
     regex: `gap-x-${numbersOrLetters}`,
-    properties: ['-moz-column-gap', 'column-gap'],
+    properties: ['-moz-column-gap', 'column-gap', 'grid-column-gap'],
   },
   {
     regex: `gap-${numbersOrLetters}`,
-    properties: ['gap'],
+    properties: ['gap', 'grid-gap'],
   },
   {
-    regex: `justify-items-(start|end|center|stretch)`,
+    regex: `row-gap-${numbersOrLetters}`,
+    properties: ['grid-row-gap', 'row-gap'],
+  },
+  {
+    regex: `col-gap-${numbersOrLetters}`,
+    properties: ['-moz-column-gap', 'column-gap', 'grid-column-gap'],
+  },
+  {
+    regex: `justify-items-(start|end|center|stretch|auto)`,
     properties: ['justify-items'],
   },
   {
@@ -576,7 +601,7 @@ const rules = [
     properties: ['align-content'],
   },
   {
-    regex: `place-items-(start|end|center|stretch)`,
+    regex: `place-items-(start|end|center|stretch|auto)`,
     properties: ['place-items'],
   },
   {
@@ -584,7 +609,7 @@ const rules = [
     properties: ['place-content'],
   },
   {
-    regex: `flex-(wrap|wrap-reverse|nowrap)`,
+    regex: `flex-(wrap|wrap-reverse|no-wrap)`,
     properties: ['flex-wrap'],
   },
   {
@@ -629,7 +654,7 @@ const rules = [
   },
   {
     regex: `select-all`,
-    properties: ['-moz-user-select', '-webkit-user-select', 'user-select'],
+    properties: ['-moz-user-select', '-webkit-user-select', 'user-select', '-ms-user-select'],
   },
   {
     regex: `select-(none|text|auto)`,
@@ -645,35 +670,35 @@ const rules = [
   },
   {
     regex: `scale-y-${number}`,
-    properties: ['--tw-scale-y'],
+    properties: ['--transform-scale-y'],
   },
   {
     regex: `scale-x-${number}`,
-    properties: ['--tw-scale-x'],
+    properties: ['--transform-scale-x'],
   },
   {
     regex: `scale-${number}`,
-    properties: ['--tw-scale-x', '--tw-scale-y'],
+    properties: ['--transform-scale-x', '--transform-scale-y'],
   },
   {
     regex: `-?skew-y-${number}`,
-    properties: ['--tw-skew-y'],
+    properties: ['--transform-skew-y'],
   },
   {
     regex: `-?skew-x-${number}`,
-    properties: ['--tw-skew-x'],
+    properties: ['--transform-skew-x'],
   },
   {
     regex: `-?rotate-${number}`,
-    properties: ['--tw-rotate'],
+    properties: ['--transform-rotate'],
   },
   {
     regex: `-?translate-y-${numbersOrLetters}`,
-    properties: ['--tw-translate-y'],
+    properties: ['--transform-translate-y'],
   },
   {
     regex: `-?translate-x-${numbersOrLetters}`,
-    properties: ['--tw-translate-x'],
+    properties: ['--transform-translate-x'],
   },
   {
     regex: `transform-none`,
@@ -681,7 +706,16 @@ const rules = [
   },
   {
     regex: `transform(-gpu)?`,
-    properties: ['--tw-rotate', '--tw-scale-x', '--tw-scale-y', '--tw-skew-x', '--tw-skew-y', '--tw-translate-x', '--tw-translate-y', 'transform'],
+    properties: [
+      '--transform-rotate',
+      '--transform-scale-x',
+      '--transform-scale-y',
+      '--transform-skew-x',
+      '--transform-skew-y',
+      '--transform-translate-x',
+      '--transform-translate-y',
+      'transform',
+    ],
   },
   {
     regex: `origin-${dashNumbersOrLetters}`,
@@ -854,6 +888,10 @@ const rules = [
   {
     regex: `sr-only`,
     properties: ['border-width', 'clip', 'height', 'margin', 'overflow', 'padding', 'position', 'white-space', 'width'],
+  },
+  {
+    regex: `scrolling-(touch|auto)`,
+    properties: ['-webkit-overflow-scrolling'],
   },
 ]
 

@@ -7,18 +7,21 @@ import uuidv4 from 'uuid/v4'
 import { findTailwindProperties } from '../../src/index'
 import { cssToProperties } from './cssToProperties'
 
-const testCases = [
+const rawTestCases = [
   { name: 'vanilla', tailwindCommandOptions: `` },
   { name: 'prefixes', tailwindCommandOptions: `-c test/propertiesVsRules/prefixConfig.js`, options: { prefix: 'my-prefix-' } },
   { name: 'extraColors', tailwindCommandOptions: `-c test/propertiesVsRules/extraColors.js` },
   { name: 'jit', tailwindCommandOptions: `--jit` },
 ]
 
+const tailwindVersions = ['2.2.19', 'latest']
+
+const testCases = rawTestCases.flatMap((testCase) => tailwindVersions.map((version) => ({ ...testCase, tailwindVersion: version })))
+
 for (const testCase of testCases) {
   test(testCase.name, () => {
     const cssFile = `/tmp/${uuidv4()}.css`
-    const generateTailwindCssFileCommand = `npx --yes tailwindcss@latest build -o ${cssFile}`
-    console.log(`${generateTailwindCssFileCommand} ${testCase.tailwindCommandOptions}`)
+    const generateTailwindCssFileCommand = `npx --yes tailwindcss@${testCase.tailwindVersion} build -o ${cssFile}`
     execSync(`${generateTailwindCssFileCommand} ${testCase.tailwindCommandOptions}`)
     const tailwindPropertiesJson = cssToProperties(cssFile)
     let tailwindProperties = _.map(tailwindPropertiesJson, (value, className) => ({ className, ...value }))
