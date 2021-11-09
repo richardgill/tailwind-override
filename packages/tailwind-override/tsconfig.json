@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "./lib"
   },
-  "include": ["src/**/*.ts", "test/oldVsNew.test.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "test/**/*"]
 }
