@@ -48,4 +48,6 @@ export const jitTestCases: TestCase[] = [
   { input: 'caret-red-500 caret-red-600', expectedOutput: 'caret-red-600' },
   { input: 'w-[300px] w-[762px]', expectedOutput: 'w-[762px]' },
   { input: 'md:top-[-400px] md:top-[80px]', expectedOutput: 'md:top-[80px]' },
+  // Not implemented (and other similar cases):
+  // { input: 'text-[magenta] text-[32px]', expectedOutput: 'text-[magenta] text-[32px]' },
 ]
