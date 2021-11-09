@@ -6,22 +6,13 @@ import { Options, overrideTailwindClasses } from '../src/index'
 import { defaultTestCases, ruleBasedTestCases, jitTestCases } from './testCases'
 
 const nonJitTestCases = [...defaultTestCases, ...ruleBasedTestCases].flatMap((testCase) => {
-  return [
-    {
-      ...testCase,
-      options: {
-        ...testCase.options,
-        jit: false,
-      },
+  return [false, true].map((jit) => ({
+    ...testCase,
+    options: {
+      ...testCase.options,
+      jit: jit,
     },
-    {
-      ...testCase,
-      options: {
-        ...testCase.options,
-        jit: true,
-      },
-    },
-  ]
+  }))
 })
 
 for (const testCase of [...nonJitTestCases, ...jitTestCases]) {
