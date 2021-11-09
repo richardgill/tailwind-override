@@ -22,7 +22,9 @@ const rawTestCases = [
   { name: 'jit', tailwindCommandOptions: `--jit` },
 ]
 
-const testCases = rawTestCases.flatMap((testCase) => tailwindVersions.map((version) => ({ ...testCase, tailwindVersion: version })))
+const testCases = rawTestCases.flatMap((testCase) => {
+  return tailwindVersions.flatMap((version) => [true, false].map((jit) => ({ ...testCase, options: { prefix: testCase.options?.prefix || '', jit }, tailwindVersion: version })))
+})
 
 for (const testCase of testCases) {
   test(testCase.name, () => {
