@@ -5,7 +5,7 @@ const defaultOptions = {
   tailwindProperties: {},
 }
 type TailwindCssRule = { properties: string[]; pseudoElements: string[]; topLevelMediaRules: string[] }
-type TailWindCssProperties = { [key: string]: TailwindCssRule }
+export type TailWindCssProperties = { [key: string]: TailwindCssRule }
 
 export type OptionsArg = { prefix?: string; tailwindProperties?: TailWindCssProperties }
 
