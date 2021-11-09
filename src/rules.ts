@@ -171,7 +171,7 @@ const rules = [
   },
   {
     regex: `outline-(none|white|black)`,
-    properties: ['outline'],
+    properties: ['outline', 'outline-offset'],
   },
   {
     regex: `shadow${maybeDashNumbersOrLetters}`,
@@ -470,11 +470,11 @@ const rules = [
   },
   {
     regex: `break-words`,
-    properties: ['overflow-wrap'],
+    properties: ['overflow-wrap', 'word-wrap'],
   },
   {
     regex: `break-normal`,
-    properties: ['overflow-wrap', 'word-break'],
+    properties: ['overflow-wrap', 'word-break', 'word-wrap'],
   },
   {
     regex: `whitespace-(normal|no-wrap|pre|pre-line|pre-wrap)`,
