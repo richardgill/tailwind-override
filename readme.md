@@ -81,20 +81,43 @@ import { overrideTailwindClasses } from 'tailwind-override'
 export const classNames = (...args) => overrideTailwindClasses(classNamesOriginal(...args))
 ```
 
-## Prefixes
+## Options
 
-Supports Tailwinds prefix functionality.
+
+### Prefix
+
+Defaults to `''`
+
+Supports Tailwind's prefix functionality.
 
 ```js
 overrideTailwindClasses('prefix-pt-2 prefix-pt-4', { prefix: 'prefix-' })
 // => 'prefix-pt-4'
 ```
 
-## Without tailwind jit
+### Jit
 
-Supports Tailwinds 'variants' functionality.
+Defaults to `true`
+
+Supportss Tailwind's jit syntax.
+
+```js
+overrideTailwindClasses('!text-[#aabbcc]/5 !text-[#ffaa11]/25', { jit: true })
+// => '!text-[#ffaa11]/25'
+```
 
 ```js
 overrideTailwindClasses('!text-[#aabbcc]/5 !text-[#ffaa11]/25', { jit: false })
 // => '!text-[#aabbcc]/5 !text-[#ffaa11]/25'
+```
+
+### Cache rule look ups
+
+Defaults to: `true`
+
+If set to true the library caches lookups for the same class e.g. `text-pink-200`, so next time it will not need to look up the rule again.
+
+```js
+overrideTailwindClasses('text-pink-200 text-pink-300', { ruleLookupCache: true })
+// => 'text-pink-200' and 'text-pink-300' rules now cached, won't be looked up again
 ```
