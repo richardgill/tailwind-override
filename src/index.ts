@@ -1,3 +1,4 @@
+import memoize from './vendor/fastMemoize'
 import { getRules } from './rules'
 
 const defaultOptions = {
@@ -8,9 +9,14 @@ const defaultOptions = {
 
 export type Options = { prefix: string; jit: boolean; ruleLookupCache: boolean }
 
-export const findTailwindProperties = (className, options: Options = { prefix: '', jit: true, ruleLookupCache: true }) => {
+const findTailwindPropertiesRaw = (className, options: Options) => {
   return getRules(options).find((rule) => rule.regex.test(className))?.properties
 }
+
+const findTailwindPropertiesMemoized = memoize(findTailwindPropertiesRaw)
+
+export const findTailwindProperties = (className: string, options: Options = defaultOptions) =>
+  options.ruleLookupCache ? findTailwindPropertiesMemoized(className, options) : findTailwindPropertiesRaw(className, options)
 
 const tailWindPremableEndIndex = (className) => className.lastIndexOf(':')
 
