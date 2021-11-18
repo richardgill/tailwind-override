@@ -1,8 +1,9 @@
+import memoize from './vendor/fastMemoize'
 import { Options } from './index'
 
 const MATCHES_NOTHING = `a^`
 
-export const getRules = ({ prefix, jit }: Options) => {
+const lookupRule = ({ prefix, jit }: Options) => {
   const arbitaryValue = jit ? `\\[.+\\]` : MATCHES_NOTHING
 
   const number = `((\\d|\\.|/)+|${arbitaryValue})`
@@ -876,3 +877,7 @@ export const getRules = ({ prefix, jit }: Options) => {
   ]
   return rules.map((rule) => ({ regex: new RegExp(`^${prefix}${rule.regex}$`), properties: rule.properties }))
 }
+
+const memoizedlookupRule = memoize(lookupRule)
+
+export const getRules = (options: Options) => (options.ruleLookupCache ? memoizedlookupRule(options) : lookupRule(options))
