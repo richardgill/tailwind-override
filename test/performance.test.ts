@@ -21,7 +21,7 @@ const duplicatedTestCases = _.times(1000).flatMap(() => allTestCases)
 test(`overrideTailwindClasses performance`, () => {
   const start = performance.now()
   for (const testCase of duplicatedTestCases) {
-    overrideTailwindClasses(testCase.input, { ...testCase.options, ruleLookupCache: false } as Options)
+    overrideTailwindClasses(testCase.input, testCase.options as Options)
   }
   const end = performance.now()
   expect(end - start).toBeLessThan(1000)
