@@ -3,11 +3,12 @@ import { getRules } from './rules'
 const defaultOptions = {
   prefix: '',
   jit: true,
+  ruleLookupCache: true,
 }
 
-export type Options = { prefix: string; jit: boolean }
+export type Options = { prefix: string; jit: boolean; ruleLookupCache: boolean }
 
-export const findTailwindProperties = (className, options: Options = { prefix: '', jit: true }) => {
+export const findTailwindProperties = (className, options: Options = { prefix: '', jit: true, ruleLookupCache: true }) => {
   return getRules(options).find((rule) => rule.regex.test(className))?.properties
 }
 

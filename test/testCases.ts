@@ -5,6 +5,7 @@ export const defaultTestCases: TestCase[] = [
   { input: 'apple oranges', expectedOutput: 'apple oranges' },
   { input: 'apple   oranges', expectedOutput: 'apple oranges' },
   { input: 'bg-yellow-600 bg-yellow-700', expectedOutput: 'bg-yellow-700' },
+  { input: 'bg-yellow-600 bg-yellow-700 apple oranges banana mellon', expectedOutput: 'bg-yellow-700 apple oranges banana mellon' },
   { input: 'bg-yellow-600 bg-yellow-700 bg-yellow-800', expectedOutput: 'bg-yellow-800' },
   { input: 'bg-yellow-600   bg-yellow-700', expectedOutput: 'bg-yellow-700' },
   { input: 'w-1/2 w-1/3', expectedOutput: 'w-1/3' },
@@ -51,3 +52,15 @@ export const jitTestCases: TestCase[] = [
   // Not implemented (and other similar cases):
   // { input: 'text-[magenta] text-[32px]', expectedOutput: 'text-[magenta] text-[32px]' },
 ]
+
+export const nonJitTestCases = [...defaultTestCases, ...ruleBasedTestCases].flatMap((testCase) => {
+  return [false, true].map((jit) => ({
+    ...testCase,
+    options: {
+      ...testCase.options,
+      jit: jit,
+    },
+  }))
+})
+
+export const allTestCases = [...nonJitTestCases, ...jitTestCases]
