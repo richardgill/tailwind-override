@@ -88,16 +88,18 @@ export const classNames = (...args) => overrideTailwindClasses(classNamesOrigina
 
 Defaults to `''`
 
-Supports Tailwinds prefix functionality.
+Supports Tailwind's prefix functionality.
 
 ```js
 overrideTailwindClasses('prefix-pt-2 prefix-pt-4', { prefix: 'prefix-' })
 // => 'prefix-pt-4'
 ```
 
-### Tailwind jit
+### Jit
 
 Defaults to `true`
+
+Supportss Tailwind's jit syntax.
 
 ```js
 overrideTailwindClasses('!text-[#aabbcc]/5 !text-[#ffaa11]/25', { jit: true })
