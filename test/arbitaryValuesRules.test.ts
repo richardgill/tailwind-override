@@ -485,7 +485,7 @@ const testCases = [
 for (const testCase of testCases) {
   test(`${testCase.classStartsWith}[value] returns expectedProperties: ${testCase.expectedProperties}`, () => {
     const className = `${testCase.classStartsWith}[value]`
-    const properties = _.sortBy(findTailwindProperties(className, { prefix: '', jit: true }))
+    const properties = _.sortBy(findTailwindProperties(className, { prefix: '', jit: true, ruleLookupCache: false }))
     const expectedProperties = _.sortBy(testCase.expectedProperties)
     expect(properties).toStrictEqual(expectedProperties)
   })
