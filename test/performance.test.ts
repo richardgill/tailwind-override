@@ -24,5 +24,5 @@ test(`overrideTailwindClasses performance`, () => {
     overrideTailwindClasses(testCase.input, testCase.options as Options)
   }
   const end = performance.now()
-  expect(end - start).toBeLessThan(3000)
+  expect(end - start).toBeLessThan(5000)
 })
