@@ -13,6 +13,10 @@ const isEqualsSorted = (x: string[], y: string[]) => {
   return _.isEqual(_.sortBy(x), _.sortBy(y))
 }
 
+const filterCssVariables = (classNames) => {
+  return classNames?.filter((c) => !c.startsWith('--'))
+}
+
 const doMediaRulesClash = (mediaRule1: string[], mediaRule2: string[]) => {
   return isEqualsSorted(mediaRule1, mediaRule2)
 }
@@ -32,7 +36,7 @@ export const overrideTailwindClasses = (classNamesString: string, optionsArg: Op
         return (
           !doMediaRulesClash(r.tailwindCssRule.topLevelMediaRules, tailwindCssRule.topLevelMediaRules) ||
           !doPseudoElementsClash(r.tailwindCssRule.pseudoElements, tailwindCssRule.pseudoElements) ||
-          !r.tailwindCssRule.properties.some((p) => tailwindCssRule.properties.includes(p))
+          !filterCssVariables(r.tailwindCssRule.properties).some((p) => filterCssVariables(tailwindCssRule.properties).includes(p))
         )
       })
       return [...nonClashingClasses, { class: className, tailwindCssRule: tailwindCssRule }]
