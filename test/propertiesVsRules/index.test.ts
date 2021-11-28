@@ -24,7 +24,11 @@ const rawTestCases = [
 
 const testCases = rawTestCases.flatMap((testCase) => {
   return tailwindVersions.flatMap((version) =>
-    [true, false].map((jit) => ({ ...testCase, options: { prefix: testCase.options?.prefix || '', jit, ruleLookupCache: true }, tailwindVersion: version })),
+    [true, false].map((jit) => ({
+      ...testCase,
+      options: { prefix: testCase.options?.prefix || '', jit, ruleLookupCache: true, ignoreCssVariables: false },
+      tailwindVersion: version,
+    })),
   )
 })
 

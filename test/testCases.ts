@@ -17,7 +17,7 @@ export const defaultTestCases: TestCase[] = [
   { input: 'pt-4 text-pink-200', expectedOutput: 'pt-4 text-pink-200' },
   { input: 'prefix-pt-2 apple prefix-pt-4 orange', options: { prefix: 'prefix-' }, expectedOutput: 'apple prefix-pt-4 orange' },
   { input: 'md:bg-red-500 md:bg-white', expectedOutput: 'md:bg-white' },
-  { input: 'transform translate-y-0', expectedOutput: 'translate-y-0' },
+  { input: 'transform translate-y-0', expectedOutput: 'transform translate-y-0' },
   { input: 'text-blue-500 focus:text-red-500', expectedOutput: 'text-blue-500 focus:text-red-500' },
   { input: 'text-blue-500 focus:text-red-500 hover:text-red-500', expectedOutput: 'text-blue-500 focus:text-red-500 hover:text-red-500' },
   { input: 'hover:text-blue-500 focus:text-red-500', expectedOutput: 'hover:text-blue-500 focus:text-red-500' },
@@ -27,6 +27,9 @@ export const defaultTestCases: TestCase[] = [
   { input: 'sm:container md:container lg:container', expectedOutput: 'sm:container md:container lg:container' },
   { input: '-inset-y-2.5 inset-y-8', expectedOutput: 'inset-y-8' },
   { input: '-inset-y-2/3 inset-y-8', expectedOutput: 'inset-y-8' },
+  { input: 'text-black text-xl', expectedOutput: 'text-black text-xl' },
+  { input: 'text-black text-xl text-opacity-2', expectedOutput: 'text-black text-xl text-opacity-2' },
+  { input: 'text-xl text-opacity-2', expectedOutput: 'text-xl text-opacity-2' },
 ]
 
 export const ruleBasedTestCases: TestCase[] = [

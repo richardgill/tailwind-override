@@ -5,12 +5,19 @@ const defaultOptions = {
   prefix: '',
   jit: true,
   ruleLookupCache: true,
+  ignoreCssVariables: true,
 }
 
-export type Options = { prefix: string; jit: boolean; ruleLookupCache: boolean }
+export type Options = { prefix: string; jit: boolean; ruleLookupCache: boolean; ignoreCssVariables: boolean }
+
+const isCssVariable = (className) => {
+  return className.startsWith('--')
+}
 
 const findTailwindPropertiesRaw = (className, options: Options) => {
-  return getRules(options).find((rule) => rule.regex.test(className))?.properties
+  return getRules(options)
+    .find((rule) => rule.regex.test(className))
+    ?.properties?.filter((property) => !options.ignoreCssVariables || !isCssVariable(property))
 }
 
 const findTailwindPropertiesMemoized = memoize(findTailwindPropertiesRaw)
